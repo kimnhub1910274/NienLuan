@@ -13,15 +13,15 @@ Route::get('/home', function () {
     return view('welcome');
 
 });
-Route::get('/news', function () {
+Route::get('news', function () {
     return view('news');
 
 });
-Route::get('/introduce', function () {
+Route::get('introduce', function () {
     return view('introduce');
 
 });
-Route::get('/product', function () {
+Route::get('product', function () {
     return view('product');
 
 });

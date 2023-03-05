@@ -32,7 +32,7 @@
         <div class="container-fluid d-flex justify-content-between" style=" margin: 10px 30px 20px 3px;">
             <!-- logo -->
             <a href="{{URL ::to('/home')}}">
-                <img class="she" src="{{{'public/Frontend/images/She.png'}}}" alt="">
+                <img class="she" src="{{{'public/images/She.png'}}}" alt="">
             </a>
             <style>
                 .she{
@@ -135,13 +135,19 @@
     <main>
         <div class="container">
             <br>
-            {{--  <p class="topic" style="text-align:center ; font-size:30px; margin-top:100px;"><b>SIÊU SALE THÁNG 12</b>  --}}
-            {{--  </p>  --}}
+            <p class="topic" style="text-align:center ; font-size:30px; margin-top:100px;"><b>SIÊU SALE THÁNG 12</b>
+            </p>
+            <div>
+                <img src="{{{'public/images/ao bazer.png'}}}" alt="">
+
+            </div>
+            @yield('content')
+
             <div class="column">
                 <div class="row align-items-start">
                     <div class="container">
                         <div class="row">
-                            @yield('content')
+
                         </div>
                     </div>
                 </div>
