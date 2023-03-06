@@ -1,8 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +12,9 @@
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 
     <link rel="stylesheet" href="{{{'public/fonts/fontawesome-free-6.0.0/css/all.min.css'}}}">
-    <link rel="stylesheet" href="{{{'public/css/login.css'}}}">
+    {{-- <link rel="stylesheet" href="{{{'public/Frontend/css/login.css'}}}"> --}}
     {{--  <link rel="stylesheet" href="{{{'public/css/main.css'}}}">  --}}
-    <link rel="stylesheet" href="{{{'public/css/test2.css'}}}">
-
-
+    <link rel="stylesheet" href="{{{'public/Frontend/css/main.css'}}}">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Boostrap 5 -->
@@ -137,18 +134,15 @@
             <br>
             <p class="topic" style="text-align:center ; font-size:30px; margin-top:100px;"><b>SIÊU SALE THÁNG 12</b>
             </p>
-            <div>
+            {{-- <div>
                 <img src="{{{'public/images/ao bazer.png'}}}" alt="">
 
-            </div>
-            @yield('content')
+            </div> --}}
 
             <div class="column">
                 <div class="row align-items-start">
                     <div class="container">
-                        <div class="row">
-
-                        </div>
+                        @yield('home_content')
                     </div>
                 </div>
             </div>

@@ -4,9 +4,9 @@ if(isset($_POST['username'])){
     $password=$_POST['password'];
   }
 ?>  --}}
-@section('welcome')
+{{-- @section('welcome')
 
-@endsection
+@endsection --}}
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,50 +19,45 @@ if(isset($_POST['username'])){
         <!-- Fontawesome -->
         <link rel="stylesheet" href="{{{'public/fonts/fontawesome-free-6.0.0/css/all.min.css'}}}">
         <!-- CSS -->
-        <link rel="stylesheet" href="{{{'public/css/test.css'}}}">
-        <link rel="stylesheet" href="{{{'public/js/login.js'}}}">
-
+        <link rel="stylesheet" href="{{{'public/Backend/css/login.css'}}}">
+        {{-- <link rel="stylesheet" href="{{{'public/js/.js'}}}"> --}}
     </head>
 
 <body>
     <div class="login">
-        <form action="" method="post">
+
+        <form action="{{URL::to('/admin_dashboard')}}" method="post"  >
+            {{ csrf_field() }}
             <div class="wrapper">
                 <div class="container">
                   <form class="form">
                     <div class="overlay">
-                        <form>
                            <div class="con">
-                           <header class="head-form">
-                              <h2>ĐĂNG NHẬP</h2>
-                           </header>
-                           <br>
+                           <header class="head-form"><h2>ĐĂNG NHẬP</h2>  </header>
+                           <?php
+                                $message = Session::get('message');
+                                if($message){
+                                    echo $message;
+                                    Session::pull('message', null);
+                                }
+                            ?>
+                           <br><br>
                            <div class="field-set">
-                                 <span class="input-item">
-                                   <i class="fa fa-user-circle"></i>
-                                 </span>
-                                 <input class="form-input" id="txt-input" type="text" placeholder="Email" required>
+                                 <input class="form-input" id="txt-input" type="text" name="admin_email" placeholder="Email" required>
                               <br>
-                              <span class="input-item">
-                                <i class="fa fa-key"></i>
-                               </span>
-                              <input class="form-input" type="password" placeholder="Mật khẩu" id="pwd"  name="password" required>
-                             <span>
-                                <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
-                             </span>
+                              <input class="form-input" type="password" name="admin_password" placeholder="Mật khẩu" id="pwd"  name="password" required>
                               <br>
                               <button class="log-in"> ĐĂNG NHẬP </button>
                            </div>
-                           {{--  <div class="other">
+                            <div class="other">
                               <button class="btn submits frgt-pass">Quên mật khẩu?</button>
                         <!--     Sign Up button -->
                               <button class="btn submits sign-up">Đăng ký
                         <!--         Sign Up font icon -->
                               <i class="fa fa-user-plus" aria-hidden="true"></i>
                               </button>
-                           </div>  --}}
+                           </div>
                           </div>
-                        </form>
                         </div>
         </form>
     </div>

@@ -10,6 +10,10 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
+    return view('pages.home');
+
+});
+Route::get('/test', function () {
     return view('welcome');
 
 });
@@ -30,4 +34,6 @@ Route::get('product', function () {
 
 //Backend
 Route::get('/admin',[AdminController::class, 'index']);
-Route::get('/dashboard',[AdminController::class, 'dashboard']);
+Route::get('/dashboard',[AdminController::class, 'show_dashboard']);
+Route::post('/admin_dashboard',[AdminController::class, 'dashboard']);
+Route::get('/logout',[AdminController::class, 'logout']);

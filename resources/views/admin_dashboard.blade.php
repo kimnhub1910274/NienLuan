@@ -1,6 +1,3 @@
-@section('admin_login')
-
-@endsection
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +16,7 @@
     <link href="{{{'public/fonts/fontawesome-free/css/all.min.css'}}}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="{{{'public/css/sb-admin-2.min.css'}}}" rel="stylesheet">
+    <link href="{{{'public/Backend/css/sb-admin-2.min.css'}}}" rel="stylesheet">
 
      <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -36,8 +33,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
 </head>
 
 <body id="page-top">
@@ -121,7 +116,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fa fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -224,32 +219,45 @@
                                 </form>
                             </div>
                         </li>
-
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="{{URL ::to('/admin_login')}}" id="alertsDropdown" role="button"
+                             <a class="nav-link dropdown-toggle" href="" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <p>Đăng nhập</p>
+                                <span style="color:black;">
+                                    <?php
+                                        {{-- $name = session('admin_name'); --}}
+                                        $name = Session::get('admin_name');
+                                       if($name){
+                                            echo $name;
+                                        }
+
+                                    ?>
+                                </span>
                             </a>
-                            <!-- Dropdown - Alerts -->
+                            {{-- <a class="nav-link dropdown-toggle" href="{{URL ::to('/admin')}}" aria-haspopup="true" aria-expanded="false">
+                                <p>Đăng nhập</p>
+                            </a> --}}
+
+                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
-                                <a class="dropdown-item d-flex align-items-center" href="">
-
+                                <a class="dropdown-item d-flex align-items-center" href="{{URL ::to('/logout')}}">
+                                    Đăng xuất
                                 </a>
+                            </div>
 
                         </li>
 
-                        <!-- Nav Item - Messages -->
+                        {{-- <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <p>Đăng ký</p>
                             </a>
 
-                        </li>
+                        </li> --}}
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                        {{-- <div class="topbar-divider d-none d-sm-block"></div> --}}
 
 
 
@@ -262,6 +270,7 @@
                 <div class="container-fluid">
 
                     @yield('admin_content')
+
                 </div>
                 <!-- /.container-fluid -->
 
