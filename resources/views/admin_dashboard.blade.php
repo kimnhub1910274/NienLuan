@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+
+	{{-- protected $casts = [
+
+	]; --}}
 <html lang="en">
 
 <head>
@@ -77,10 +82,10 @@
                     <span>Danh mục sản phẩm</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header"></h6>
-                        <a class="collapse-item" href="buttons.html">Thêm danh mục</a>
-                        <a class="collapse-item" href="cards.html">Liệt kê</a>
+                    <div class=" py-2 collapse-inner rounded">
+                        <h6 class="collapse-header" ></h6>
+                        <a class="collapse-item" style="color: white" href="{{URL::to('/add-category-product')}}">Thêm danh mục</a>
+                        <a class="collapse-item" style="color: white" href="{{URL::to('/list-category-product')}}">Liệt kê</a>
                     </div>
                 </div>
             </li>

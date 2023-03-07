@@ -142,7 +142,7 @@
             <div class="column">
                 <div class="row align-items-start">
                     <div class="container">
-                        @yield('home_content')
+                        @yield('home')
                     </div>
                 </div>
             </div>

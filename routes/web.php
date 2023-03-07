@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryProduct;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,12 @@ Route::get('/admin',[AdminController::class, 'index']);
 Route::get('/dashboard',[AdminController::class, 'show_dashboard']);
 Route::post('/admin_dashboard',[AdminController::class, 'dashboard']);
 Route::get('/logout',[AdminController::class, 'logout']);
+
+//category product
+Route::get('/add-category-product',[CategoryProduct::class, 'add_category_product']);
+Route::get('/list-category-product',[CategoryProduct::class, 'list_category_product']);
+
+Route::post('/category-product',[CategoryProduct::class, 'save_category_product']);
+
+Route::get('/on-cate/{$category_id}',[CategoryProduct::class, 'on_category']);
+Route::get('/off-cate/{$category_id}',[CategoryProduct::class, 'off_category']);
