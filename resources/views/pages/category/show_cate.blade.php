@@ -1,10 +1,13 @@
 @extends('welcome')
 @section('home')
 
+
   <div class="container text-center">
-    <h4 class="title text-center">SẢN PHẨM MỚI</h4>
+    @foreach ($cate_name as $key => $name)
+        <h4 class="title text-center">{{ $name->cate_name }}</h4>
+    @endforeach
     <div class="row">
-        @foreach ($list_product as $key => $product )
+        @foreach ($cate_by_id as $key => $product )
         <div class="col">
             <a href="{{ URL::to('/product-detail/'.$product->product_id) }}" >
                 <img src="{{ URL::to('public/uploads/product/'.$product->product_image) }}" width="200" height="200" style="margin-bottom: 5px" alt="">

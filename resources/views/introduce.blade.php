@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('test')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,8 @@
                     <p><b>Khi mua sắm sản phẩm tại SHE , bạn sẽ nhận được đặc quyền bảo hành trọn đời miễn phí!</b></p>
                     <p><b>Tuy nhiên, trong chính sách này không bao gồm những trường hợp đặc biệt như sau:</b></p>
                     <p>- Cửa hàng chỉ bảo hành/sửa chữa đơn giản như cắt gấu, bóp nới sản phẩm. Không nhận sửa chữa
-                        các tình tiết phức tạp có thể làm thay đổi thiết kế chuẩn của sản phẩm hoặc các sản phẩm gặp vấn đề như bị phai màu, lỗi hỏng nặng trong quá trình sử dụng do lỗi từ phía cá nhân người dùng.</p>
+                        các tình tiết phức tạp có thể làm thay đổi thiết kế chuẩn của sản phẩm hoặc các sản phẩm gặp vấn đề như bị phai màu,
+                         lỗi hỏng nặng trong quá trình sử dụng do lỗi từ phía cá nhân người dùng.</p>
                     <p>- Nếu muốn chỉnh sửa sản phẩm theo yêu cầu cá nhân, quý khách vui lòng mất thêm chi phí
                         nguyên vật liệu.</p>
                     <p>- Đặc quyền với khách hàng mua hàng online: Quý khách có yêu cầu sửa chữa bảo hành sản phẩm,

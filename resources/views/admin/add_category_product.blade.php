@@ -1,8 +1,8 @@
 @extends('admin_dashboard')
 @section('admin_content')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<div class="row">
-    <div class="col-lg-12">
+<div class="">
+    <div class="">
         <?php
             $message = Session::get('message');
             if($message){
@@ -11,7 +11,7 @@
             }
         ?>
         <section class="panel">
-            <header class="panel-heading">
+            <header class="panel-heading text-center">
                 <h3>THÊM DANH MỤC SẢN PHẨM</h3>
 
             </header>
@@ -20,34 +20,40 @@
                     <form action="{{URL::to('/category-product')}}" method="post" enctype='multipart/form-data'>
                         {{ csrf_field() }}
                         <div class="mb-3">
-                            <label  class="form-label">Tên danh mục</label>
+                            <label  class="form-label"><b>Tên danh mục</b></label>
                             <input type="text" class="form-control" name="cate_pro_name" placeholder="">
                         </div>
                         <div class="mb-3">
-                            <label  class="form-label">Mô tả</label>
+                            <label  class="form-label"><b>Mô tả</b></label>
                             <textarea class="form-control" style="resize:none;" name="cate_pro_decr" rows="3"></textarea>
                         </div>
-                       <div class="mb-3">
-                            <select class="form-select input-sm" name="cate_pro_status">
-                                <option selected value="1">Hiển thị</option>
-                                <option value="0">Ẩn</option>
-                          </select>
+                       <div class="row">
+                            <div class="col">
+                                <label  class="form-label"><b>Hiển thị</b></label>
+                                    <select class="form-select input-sm" name="cate_pro_status">
+                                        <option selected value="1">Hiển thị</option>
+                                        <option value="0">Ẩn</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for=""></label>
+                                <button class="add btn btn-primary" type="submit" name="add-cate-pro">Thêm danh mục</button>
+                            </div>
                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Default file input example</label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div>
-                        <button class="add btn btn-primary" type="submit" name="add-cate-pro">Thêm danh mục</button>
 <style>
     .mb-3{
         width: 60%;
     }
-    .panel{
+    .panel-body{
         margin-left: 30%;
     }
-    {{-- .add{
-        width: 100px;
-    } --}}
+    .form-select{
+        width: 150px;
+    }
+    .add{
+        margin-left: -74px;
+        margin-top: 32px;
+    }
 </style>
                     </form>
                 </div>

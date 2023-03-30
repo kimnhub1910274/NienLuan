@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 
     <link rel="stylesheet" href="{{{'public/fonts/fontawesome-free-6.0.0/css/all.min.css'}}}">
-    {{-- <link rel="stylesheet" href="{{{'public/Frontend/css/login.css'}}}"> --}}
-    {{--  <link rel="stylesheet" href="{{{'public/css/main.css'}}}">  --}}
     <link rel="stylesheet" href="{{{'public/Frontend/css/main.css'}}}">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -22,6 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <!-- owl carousel -->
     <script src="owlcarousel/owl.carousel.min.js"></script>
+    <title>She</title>
+
 </head>
 
 <body>
@@ -128,22 +128,53 @@
         </div>
         </div>
     </header>
-    <title>HÀNG MỚI VỀ</title>
     <main>
-        <div class="container">
-            <br>
-            <p class="topic" style="text-align:center ; font-size:30px; margin-top:100px;"><b>SIÊU SALE THÁNG 12</b>
-            </p>
-            {{-- <div>
-                <img src="{{{'public/images/ao bazer.png'}}}" alt="">
-
-            </div> --}}
-
-            <div class="column">
-                <div class="row align-items-start">
-                    <div class="container">
-                        @yield('home')
+        <div class="container-fluid " style="margin-top: 100px">
+            <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="public/images/bannerhome.png" class="d-block w-100" alt="...">
+                </div>
+                    <div class="carousel-item">
+                        <img src="public/images/bannerhome2.png" class="d-block w-100" alt="...">
                     </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+          </div>
+
+        </div>
+
+        <div class="container bg-light">
+            <div class="row">
+                <div class="col-sm-3">
+                    <nav class="navbar ">
+                        <div class="container">
+                            <ul class="navbar-nav">
+                                <h5>DANH MỤC SẢN PHẨM</h5>
+                                @foreach ($category as $key => $cate)
+                                    <li class="nav-item">
+                                        <a class="nav-link" style="color:black" href="{{ URL::to('/category-products/'.$cate->cate_id) }}">{{ $cate->cate_name }}</a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-9">
+                    @yield('home')
                 </div>
             </div>
         </div>
@@ -198,7 +229,7 @@
 </footer>
 
 <!-- header-fixed -->
-<script>
+{{-- <script>
   $(document).ready(function(){
     $(window).scroll(function(){
         if($(this).scrollTop()){
@@ -212,7 +243,7 @@
         $(this).addClass('active').siblings().removeClass('active');
     })
   })
-</script>
+</script> --}}
 <script>
 // Get the button
 let mybutton = document.getElementById("myBtn");
