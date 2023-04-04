@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('home')
 @foreach ($product_details as $key => $value )
-<div class=" container product-details"><!--product-details-->
+<div class="container  product-details"><!--product-details-->
     <div class="row">
         <div class="col-sm-6" style="margin-top: 30px;">
             <div class="view-product">
@@ -29,7 +29,7 @@
                         {{csrf_field() }}
                         <p> <b>Giá:</b> {{number_format($value->product_price)}} VND</p>
                         <label><b>Số lượng:</b></label>
-                        <input type="text" value="" name="quantity" style="width:50px;" />
+                        <input type="text" value="" name="quantity" style="width: ;" />
                         <input type="hidden" value="{{$value->product_id}}" name="product_id_hidden" style="width:50px;" />
                         <br>
                         <div><b>Màu:</b>

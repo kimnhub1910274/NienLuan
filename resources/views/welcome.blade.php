@@ -28,7 +28,7 @@
     <header class="header fixed" style="margin-bottom: 50px;">
         <div class="container-fluid d-flex justify-content-between" style=" margin: 10px 30px 20px 3px;">
             <!-- logo -->
-            <a href="{{URL ::to('/home')}}">
+            <a href="{{URL ::to('/dashboard')}}">
                 <img class="she" src="{{{'public/images/She.png'}}}" alt="">
             </a>
             <style>
@@ -40,7 +40,7 @@
             <ul class="nav d-sm-none d-md-none d-lg-flex d-xl-flex p-1">
                 <li class="nav-item align-self-center ">
                     <a class=" menu nav-link  align-self-center d-none d-sm-none d-md-none d-none d-lg-flex d-xl-flex "
-                        style="font-weight: 400;color:black;" href="{{URL ::to('/home')}}" aria-current="page">
+                        style="font-weight: 400;color:black;" href="{{URL ::to('/dashboard')}}" aria-current="page">
                         TRANG CHỦ</a>
                 </li>
                 <li class="nav-item align-self-center">
@@ -85,7 +85,7 @@
                                 <div class="dropdown mt-3">
                                     <ul class="navbar-nav">
                                         <li class="nav-item px-xl-5 px-lg-4 px-md-3 pt-3">
-                                            <a href="{{URL ::to('/home')}}" style="text-decoration:none;color:black;">TRANG CHỦ</a>
+                                            <a href="{{URL ::to('/dashboard')}}" style="text-decoration:none;color:black;">TRANG CHỦ</a>
                                         </li>
                                         <li class="nav-item px-xl-5 px-lg-4 px-md-3 pt-3">
                                             <a href="{{{'pages/introduce.php'}}}" style="text-decoration:none;color:black;">GIỚI
@@ -129,7 +129,7 @@
         </div>
     </header>
     <main>
-        <div class="container-fluid " style="margin-top: 100px">
+        <div class="container-fluid " >
             <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -187,7 +187,7 @@
             <div class="col">
               <b>DANH MỤC</b>
               <div class="contact">
-                  <div><a href="{{URL ::to('/home')}}" style="text-decoration:none ;color:black;">TRANG CHỦ</a></div>
+                  <div><a href="{{URL ::to('/dashboard')}}" style="text-decoration:none ;color:black;">TRANG CHỦ</a></div>
                     <div><a href="{{{'pages/introduce.php'}}}" style="text-decoration:none ;color:black;">GIỚI THIỆU</a></div>
                   <div><a href="{{{'pages/product.php'}}}" style="text-decoration:none ;color:black;">SẢN PHẨM</a></div>
                   <div><a href="{{{'pages/news.php'}}}" style="text-decoration:none ;color:black;">TIN TỨC</a></div>

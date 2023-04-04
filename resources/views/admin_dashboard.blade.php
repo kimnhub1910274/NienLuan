@@ -103,8 +103,6 @@
                         <h6 class="collapse-header"></h6>
                         <a class="collapse-item" href="{{URL::to('/list-product')}}">Danh sách sản phẩm</a>
                         <a class="collapse-item" href="{{URL::to('/add-product')}}">Thêm sản phẩm</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
             </li>
@@ -292,7 +290,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; She 2023</span>
                     </div>
                 </div>
             </footer>
@@ -304,7 +302,7 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
+    {{-- <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
@@ -327,7 +325,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

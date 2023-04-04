@@ -7,6 +7,12 @@
                 <h4>Danh sách sản phẩm</h4>
             </div>
             <div class="card-body">
+                <?php
+                    $content = Cart::content();
+                    echo '<>pre';
+                    print_r($content);
+                    echo '</pre>'
+                ?>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>

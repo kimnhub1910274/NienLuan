@@ -15,9 +15,6 @@ class HomeController extends Controller
     public function index()
     {
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
-       // $list_product = DB::table('tbl_product')
-        //->join('tbl_cate_pro','tbl_cate_pro.cate_id','=','tbl_product.category_id')
-        //->orderby('tbl_product.product_id')->get();
         $list_product = DB::table('tbl_product')->where('product_status','1')->orderby('product_id','desc')->limit(4)->get();
 
         return view('pages.home')->with('category',$cate_product)->with('list_product',$list_product);

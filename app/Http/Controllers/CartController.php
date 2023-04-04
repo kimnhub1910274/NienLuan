@@ -20,6 +20,7 @@ class CartController extends Controller
         $product_info = DB::table('tbl_product')->where('product_id',$product_id)->get();
 
         Cart::add('293ad', 'Product 1', 1, 9.99, 550);
+
         return view('pages.cart.cart')->with('category',$cate_product);
 
     }

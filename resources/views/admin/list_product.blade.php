@@ -15,9 +15,9 @@
           <tr>
             <th scope="col">STT</th>
             <th scope="col">Tên sản phẩm</th>
-            <th scope="col">Hình danh mục</th>
-            <th scope="col">Giá danh mục</th>
-            <th scope="col">Mô tả danh mục</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Giá </th>
+            <th scope="col">Mô tả </th>
             <th scope="col">Danh mục</th>
             <th scope="col">Hiển thị</th>
             <th scope="col">Sửa</th>

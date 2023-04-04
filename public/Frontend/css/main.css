@@ -12,12 +12,12 @@ html{
     background-size: cover;
   }
   .header{
-    color:#fff;
+    color:whitesmoke;
     transition: all ease-in-out 0.3s;
     margin: 0;
     width: 100%;
     background-color: transparent;
-    /* position: fixed; */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -28,9 +28,9 @@ html{
   .she{
       width: 250px;
   }
-  /* .fixed{
+  .fixed{
     background-color: whitesmoke;
-  } */
+  }
 
   .container{
       margin-top: 24px;
