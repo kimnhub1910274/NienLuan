@@ -12,7 +12,8 @@
                 <span><i class="fa-regular fa-heart"></i></span>
                 <br>
                 <span class="price"><b>Giá: {{ number_format($product->product_price).' '.'VND' }}</b></span>
-                <span><i class="fa-solid fa-cart-plus"></i></span>
+                <span>
+                    <i class="fa-solid fa-cart-plus"></i></span>
             </a>
         </div>
         <style>
@@ -30,17 +31,8 @@
 
               }
         </style>
-
-
-
-
-
-
     @endforeach
     </div>
-
-
-
   </div>
 
 @endsection
