@@ -7,6 +7,32 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 //Frontend
 Route::get('/news', function () {
     return view('news');
@@ -23,13 +49,11 @@ Route::get('/introduce', function () {
     return view('introduce');
 
 });
-Route::get('/product', function () {
-    return view('product');
 
-});
 
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/home',[HomeController::class, 'index']);
+Route::get('/product',[HomeController::class, 'product']);
 // category products - home
 Route::get('/category-products/{cate_id}',[CategoryProduct::class, 'show_cate_home']);
 Route::get('/product-detail/{product_id}',[ProductController::class, 'product_detail']);
@@ -68,3 +92,9 @@ Route::get('/on-pro/{product_id}', [ProductController::class, 'on_pro']);
 Route::get('/off-pro/{product_id}', [ProductController::class, 'off_pro']);
 //cart
 Route::post('/save-cart', [CartController::class, 'save_cart']);
+Route::get('/show-cart', [CartController::class, 'cart']);
+Route::get('/check-out', [CartController::class, 'check_out']);
+Route::get('/delete-to-cart/{id}', [CartController::class, 'delete_to_cart']);
+
+
+

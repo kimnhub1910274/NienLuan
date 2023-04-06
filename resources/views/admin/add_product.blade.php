@@ -11,7 +11,7 @@
             }
         ?>
         <section class="panel">
-            <header class="panel-heading text-center">
+            <header class="text-center panel-heading">
                 <h3>THÊM SẢN PHẨM</h3>
             </header>
             <div class="panel-body">
@@ -66,6 +66,10 @@
     }
     .mb{
         margin-left: -150px;
+    }
+    .add{
+        margin-bottom: 10px
+    
     }
 
 </style>

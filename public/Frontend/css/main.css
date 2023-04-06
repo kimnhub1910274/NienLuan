@@ -197,3 +197,18 @@ html{
   .product-details{
 	overflow:hidden;
 }
+.fa-cart-plus{
+    color: rgb(15, 162, 170);
+    padding: 5px;
+
+  }
+  .price{
+    color: #af2b1f;
+  }
+  a{
+    text-decoration-line: none;
+    color: #000;
+
+  }
+  .col{
+    margin-bottom:20px;}

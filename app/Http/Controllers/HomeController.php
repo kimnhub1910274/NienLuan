@@ -19,4 +19,12 @@ class HomeController extends Controller
 
         return view('pages.home')->with('category',$cate_product)->with('list_product',$list_product);
     }
+    public function product()
+    {
+        $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
+        $list_product = DB::table('tbl_product')->where('product_status','1')->orderby('product_id','desc')->get();
+
+        return view('pages.product')->with('category',$cate_product)->with('list_product',$list_product);
+    }
+
 }

@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_cate_pro', function (Blueprint $table) {
-            $table->id();
+            $table->Increments('cate_id');
+            $table->String('cate_name');
+            $table->String('cate_decr');
+            $table->Interger('cate_status');
             $table->timestamps();
         });
     }

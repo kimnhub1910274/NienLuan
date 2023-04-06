@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <header class="header fixed" style="margin-bottom: 50px;">
+    <header class="fixed header" style="margin-bottom: 50px;">
         <div class="container-fluid d-flex justify-content-between" style=" margin: 10px 30px 20px 3px;">
             <!-- logo -->
             <a href="{{URL ::to('/home')}}">
@@ -36,24 +36,24 @@
                     border-radius: 20px;
                 }
             </style>
-            <ul class="nav d-sm-none d-md-none d-lg-flex d-xl-flex p-1">
+            <ul class="p-1 nav d-sm-none d-md-none d-lg-flex d-xl-flex">
                 <li class="nav-item align-self-center ">
-                    <a class=" menu nav-link  align-self-center d-none d-sm-none d-md-none d-none d-lg-flex d-xl-flex "
+                    <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
                         style="font-weight: 400;color:black;" href="{{URL ::to('/home')}}" aria-current="page">
                         TRANG CHỦ</a>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a class=" menu nav-link  align-self-center d-none d-sm-none d-md-none d-none d-lg-flex d-xl-flex"
+                    <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
                         style="font-weight: 400;color:black;" href="{{URL ::to('/introduce')}}">
                         GIỚI THIỆU</a>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a class=" menu nav-link  align-self-center d-none d-sm-none d-md-none d-none d-lg-flex d-xl-flex"
+                    <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
                         style="font-weight: 400;color:black;" href="{{URL ::to('/product')}}">
                         SẢN PHẨM</a>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a class="menu nav-link   align-self-center d-none d-sm-none d-md-none d-none d-lg-flex d-xl-flex"
+                    <a class="menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
                         style="font-weight: 400;color:black;" href="{{URL ::to('/news')}}">
                         TIN TỨC </a>
                 </li>
@@ -76,25 +76,25 @@
                             <div class="login">
                                 <a href="login.php" style="text-decoration: none;">Đăng nhập</a>
                             </div>
-                            <div class="d-flex mx-2 justify-content-end">
+                            <div class="mx-2 d-flex justify-content-end">
 
                             </div>
                             <hr>
-                            <div class="offcanvas-body p-0 mx-3">
-                                <div class="dropdown mt-3">
+                            <div class="p-0 mx-3 offcanvas-body">
+                                <div class="mt-3 dropdown">
                                     <ul class="navbar-nav">
-                                        <li class="nav-item px-xl-5 px-lg-4 px-md-3 pt-3">
+                                        <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
                                             <a href="{{URL ::to('/home')}}" style="text-decoration:none;color:black;">TRANG CHỦ</a>
                                         </li>
-                                        <li class="nav-item px-xl-5 px-lg-4 px-md-3 pt-3">
+                                        <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
                                             <a href="{{{'pages/introduce.php'}}}" style="text-decoration:none;color:black;">GIỚI
                                                 THIỆU</a>
                                         </li>
-                                        <li class="nav-item  px-xl-5 px-lg-4 px-md-3 pt-3">
+                                        <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
                                             <a href="{{{'pages/product.php'}}}" style="text-decoration:none;color:black;">SẢN
                                                 PHẨM</a>
                                         </li>
-                                        <li class="nav-item px-xl-5 px-lg-4 px-md-3 pt-3">
+                                        <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
                                             <a href="{{URL ::to('/news')}}" style="text-decoration:none;color:black;">TIN TỨC</a>
                                     </ul>
                                 </div>
@@ -119,7 +119,7 @@
                 </form>
             </div>
             <div class="cart">
-                <a href="view_cart.php" style="text-decoration: none; color:black;"><i
+                <a href="{{URL ::to('/show-cart')}}" style="text-decoration: none; color:black;"><i
                         class="fa-solid fa-cart-shopping"></i>
                     <span id="circle"></span>
                 </a>
@@ -133,7 +133,7 @@
 </body>
 <footer >
 
-    <div class="ft container">
+    <div class="container ft">
         <div class="row align-items-start">
             <div class="col">
               <b>DANH MỤC</b>

@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('test')
 <!DOCTYPE html>
 <html lang="en">
 <head>

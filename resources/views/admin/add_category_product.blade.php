@@ -11,7 +11,7 @@
             }
         ?>
         <section class="panel">
-            <header class="panel-heading text-center">
+            <header class="text-center panel-heading">
                 <h3>THÊM DANH MỤC SẢN PHẨM</h3>
 
             </header>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="col">
                                 <label for=""></label>
-                                <button class="add btn btn-primary" type="submit" name="add-cate-pro">Thêm danh mục</button>
+                                <button class="add btn btn-primary"  type="submit" name="add-cate-pro">Thêm danh mục</button>
                             </div>
                        </div>
 <style>
