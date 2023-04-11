@@ -33,15 +33,7 @@
 
                                     </a></td>
                                     <td>{{ $value->name }}</td>
-                                    <td>
-                                        <form action="">
-                                            <input type="hidden" name="action" value="update">
-                                            <input type="hidden" name="id" value="">
-                                            <input style="width:50px;" type="text" name="quantity" value="{{ $value->quantity }}">
-                                            {{-- <button type="submit" class="btt">Cập nhật</button> --}}
-                                        </form>
-                                    </td>
-                                    {{-- <td>{{ number_format($value->price) }}</td> --}}
+                                    <td>{{ $value->quantity}} </td>
                                     <td>{{ number_format($value->price * $value->quantity) }}</td>
                                     <td><i class="fa-solid fa-trash"></i></td>
                                 </tr>

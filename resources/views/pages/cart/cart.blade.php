@@ -10,7 +10,6 @@
                 <?php
                 $content = Cart::getContent();
                 {{-- $content = Cart::getContent();
-
                     echo '<pre>';
                     print_r($content);
                     echo '</pre>' --}}
@@ -22,6 +21,8 @@
                             <th>Ảnh sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Số lượng</th>
+                            <th>Màu</th>
+                            <th>Size</th>
                             <th>Đơn giá</th>
                             <th>Thành tiền</th>
                             <th>Xóa</th>
@@ -29,32 +30,55 @@
                     </thead>
                     <tbody>
                         @foreach ($content as $key => $value )
-                        <tr>
-                            <td>{{ $value->id }}</td>
-                            <td><a href="{{ URL::to('/product-detail/'.$value->id) }}" >
-                                <img src="{{URL::to('public/uploads/product'.$value->attributes->image) }}"
-                                 width="100" height="100" style="margin-bottom: 5px" alt="">
-                                 {{-- {{ $value->name }} --}}
-                            </a></td>
-                            <td>{{ $value->name }}</td>
-                            <td>
-                                <form action="">
-                                    <input type="hidden" name="action" value="update">
-                                    <input type="hidden" name="id" value="">
-                                    <input style="width:50px;" type="text" name="quantity" value="{{ $value->quantity }}">
-                                    <button type="submit" class="btt">Cập nhật</button>
-                                </form>
-                            </td>
-                            <td>{{ number_format($value->price) }}</td>
-                            <td>{{ number_format($value->price * $value->quantity) }}</td>
-                            <td>
-                                <a href="{{ URL::to('/delete-to-cart/'.$value->id) }}"><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $value->id }}</td>
+                                <td><a href="{{ URL::to('/product-detail/'.$value->id) }}" >
+                                    <img src="{{URL::to('public/uploads/product'.$value->attributes->image) }}"
+                                     width="100" height="100" style="margin-bottom: 5px" alt="">
+                                     {{-- {{ $value->name }} --}}
+                                </a></td>
+                                <td>{{ $value->name }}</td>
+                                <td>
+                                    <span>
+                                        <form action="{{ URL::to('/reduce-to-cart') }}" method="post">
+                                            {{@csrf_field() }}
+                                            <input type="hidden" name="cart_id" value="{{$value->id  }}">
+                                            <button type="submit" class="btt">-</button>
+                                        </form>
+                                    </span>
+                                    <span>
+                                        <form action="{{ URL::to('/increase-to-cart') }}" method="post" style="margin-left: 23px;
+                                        margin-top: -36px;">
+                                            {{@csrf_field() }}
+                                            <input type="hidden" name="cart_id" value="{{$value->id  }}">
+                                            <input style="width:50px;" type="text" name="cart_quantity[]" value="{{ $value->quantity }}" min="1">
+                                            <button type="submit" class="btt">+</button>
+                                        </form>
+                                    </span>
 
+                                </td>
+                                <td>
+                                    <select class="form-select" aria-label="Default select example" style="width:150px;">
+                                        <option selected><p>{{ $value->name }}</p></option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                </td>
+                                <td><select class="form-select" aria-label="Default select example" style="width:150px;">
+                                    <option selected><p>{{ $value->name }}</p></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                  </select></td>
+                                <td>{{ number_format($value->price) }}</td>
+                                <td>{{ number_format($value->price * $value->quantity) }}</td>
+                                <td>
+                                    <a href="{{ URL::to('/delete-to-cart/'.$value->id) }}"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            <!-- <button class="btn btn-success" name="sb" type="submit">Đặt hàng</button> -->
 
-
-                    <!-- <button class="btn btn-success" name="sb" type="submit">Đặt hàng</button> -->
                         @endforeach
                         <tr>
                             <td><b>TỔNG TIỀN:</b></td>

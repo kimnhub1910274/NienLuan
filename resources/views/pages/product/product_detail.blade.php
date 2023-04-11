@@ -29,15 +29,24 @@
                         {{csrf_field() }}
                         <p> <b>Giá:</b> {{number_format($value->product_price)}} VND</p>
                         <label><b>Số lượng:</b></label>
-                        <input type="text" value="" name="quantity" style="width:50px ;" />
+                        <input type="number" value="" name="quantity" style="width:50px ;" min="1" />
                         <input type="hidden" value="{{$value->product_id}}" name="product_id_hidden" style="width:50px;" />
                         <br>
                         <div><b>Màu:</b>
-                            <span><div class="circle red" style="background-color:pink;" ></div></span>
-                            <span><div class="circle green" style="background-color:orange;"></div></span>
-                            <span><div class="circle yellow" style="background-color:yellow;"></div></span>
+                            <select id="color" class="form-select" aria-label="Default select example" style="width:130px;" name="color">
+                                <option selected><p></p></option>
+
+                              </select>
+
                         </span>
-                        <p><b>Size:</b></p>
+                        <p><b>Kích thước:</b></p>
+                        <select id="size" class="form-select" aria-label="Default select example" style="width:180px;" name="size" >
+                            <option selected >Chọn kích thước</option>
+                            <option value="1">S</option>
+                            <option value="2">M</option>
+                            <option value="3">L</option>
+                          </select>
+                        <br>
                         <button type="submit" class="btn btn-primary cart">
                             <i class="fa fa-shopping-cart"></i>
                             Thêm vào giỏ hàng

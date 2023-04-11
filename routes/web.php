@@ -95,6 +95,9 @@ Route::post('/save-cart', [CartController::class, 'save_cart']);
 Route::get('/show-cart', [CartController::class, 'cart']);
 Route::get('/check-out', [CartController::class, 'check_out']);
 Route::get('/delete-to-cart/{id}', [CartController::class, 'delete_to_cart']);
+Route::post('/increase-to-cart', [CartController::class, 'increase_to_cart']);
+Route::post('/reduce-to-cart', [CartController::class, 'reduce_to_cart']);
+
 
 
 

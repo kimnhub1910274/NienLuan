@@ -19,21 +19,13 @@ class CartController extends Controller
 
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
 
-        //Cart::add('293ad', 'name' => 'Product 1', 'quantiy' => 1, 'price' => 9.99);
-
-        // Cart::add('293ad', 'Product 1', 1, 9.99, 550);
-        //Cart::destroy();
         $data['id'] = $product_info->product_id;
         $data['quantity'] = $quantity;
         $data['name'] = $product_info->product_name;
         $data['price'] = $product_info->product_price;
-       // $data['image'] = $product_info->product_decr;
-
         $data['attributes']['image'] = $product_info->product_image;
         Cart::add($data);
         return Redirect::to('/show-cart');
-        //return view('pages.cart.cart')->with('category',$cate_product);
-
     }
 
 
@@ -52,4 +44,23 @@ class CartController extends Controller
 
     }
 
+
+    public function increase_to_cart(Request $request){
+        $cart_id = $request->cart_id;
+        Cart::update($cart_id, array(
+            'quantity' => +1,
+        ));
+        return Redirect::to('/show-cart');
+
+    }
+    public function reduce_to_cart(Request $request){
+        $cart_id = $request->cart_id;
+        Cart::update($cart_id, array(
+            'quantity' => -1,
+          ));
+        return Redirect::to('/show-cart');
+
+
+
+    }
 }

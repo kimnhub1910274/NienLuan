@@ -69,7 +69,7 @@
     }
     .add{
         margin-bottom: 10px
-    
+
     }
 
 </style>
