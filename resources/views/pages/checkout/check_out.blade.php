@@ -54,32 +54,39 @@
                     <div class="card-header">
                         <h6>THÔNG TIN GIAO HÀNG</h6>
                     </div>
+                    <?php
+                        $customer_name = Session::get('customer_name');
+                        $customer_phone = Session::get('customer_phone');
+                        $customer_address = Session::get('customer_address');
+                    ?>
                     <div class="card-body">
+
                         <form action="{{ URL::to('/save-checkout') }}" method="POST">
-                             {{ csrf_field() }}
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Họ tên</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" name="order_name"
-                                aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Số điện thoại</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" name="order_phone"
-                                aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Địa chỉ</span>
-                                <input type="text" class="form-control" placeholder="" aria-label=""
-                                name="order_address"
-                                aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Ghi chú</span>
-                                <textarea type="text" class="form-control" placeholder="" name="order_note"></textarea>
-                            </div>
-                            <input type="submit" value="ĐẶT HÀNG" class="btn btn-success"
-                            style="float: right" name="order" ></input>
-                        </form>
+                            {{ csrf_field() }}
+                           <div class="mb-3 input-group">
+                               <span class="input-group-text" id="basic-addon1">Họ tên</span>
+                               <input type="text" class="form-control" placeholder="" aria-label="" name="order_name"
+                               aria-describedby="basic-addon1" value="{{ $customer_name }}">
+                           </div>
+                           <div class="mb-3 input-group">
+                               <span class="input-group-text" id="basic-addon1">Số điện thoại</span>
+                               <input type="text" class="form-control" placeholder="" aria-label="" name="order_phone"
+                               aria-describedby="basic-addon1" value="{{ $customer_phone }}">
+                           </div>
+                           <div class="mb-3 input-group">
+                               <span class="input-group-text" id="basic-addon1">Địa chỉ</span>
+                               <input type="text" class="form-control" placeholder="" aria-label=""
+                               name="order_address"
+                               aria-describedby="basic-addon1" value="{{ $customer_address }}">
+                           </div>
+                           <div class="mb-3 input-group">
+                               <span class="input-group-text" id="basic-addon1">Ghi chú</span>
+                               <textarea type="text" class="form-control" placeholder="" name="order_note"></textarea>
+                           </div>
+                           <input type="submit" value="ĐẶT HÀNG" class="btn btn-success"
+                           style="float: right" name="order" ></input>
+                       </form>
+
                     </div>
                 </div>
 

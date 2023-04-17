@@ -7,17 +7,25 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous">
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 
     <link rel="stylesheet" href="{{{'public/fonts/fontawesome-free-6.0.0/css/all.min.css'}}}">
     <link rel="stylesheet" href="{{{'public/Frontend/css/main.css'}}}">
     <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+     crossorigin="anonymous"></script>
     <!-- Boostrap 5 -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+     crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+     crossorigin="anonymous"></script>
     <!-- owl carousel -->
     <script src="owlcarousel/owl.carousel.min.js"></script>
     <title>She</title>
@@ -62,7 +70,7 @@
             <!-- offcanvas menu-->
             <div class="d-flex">
                 <div class="align-self-center me-3">
-                    <nav class="navbar navbar-expand-xl navbar-expand-lg navbar-light">
+                    <nav class="navbar navbar-expand-xl navbar-expand-lg navbar-light" aria-labelledby="">
                         <!-- nút menu -->
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -85,18 +93,22 @@
                                 <div class="mt-3 dropdown">
                                     <ul class="navbar-nav">
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{URL ::to('/dashboard')}}" style="text-decoration:none;color:black;">TRANG CHỦ</a>
+                                            <a href="{{URL ::to('/dashboard')}}"
+                                            style="text-decoration:none;color:black;">TRANG CHỦ</a>
                                         </li>
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{{'pages/introduce.php'}}}" style="text-decoration:none;color:black;">GIỚI
+                                            <a href="{{{'pages/introduce.php'}}}"
+                                            style="text-decoration:none;color:black;">GIỚI
                                                 THIỆU</a>
                                         </li>
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{{'pages/product.php'}}}" style="text-decoration:none;color:black;">SẢN
+                                            <a href="{{{'pages/product.php'}}}"
+                                             style="text-decoration:none;color:black;">SẢN
                                                 PHẨM</a>
                                         </li>
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{URL ::to('/news')}}" style="text-decoration:none;color:black;">TIN TỨC</a>
+                                            <a href="{{URL ::to('/news')}}"
+                                             style="text-decoration:none;color:black;">TIN TỨC</a>
                                     </ul>
                                 </div>
                             </div>
@@ -121,13 +133,13 @@
             </div>
             <?php
                 $customer_id = Session::get('customer_id');
-                if($customer_id != null) {
+                if ($customer_id != null) {
             ?>
                 <div class="login" style="color:black;margin-top: 20px;">
                     <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất,</b></a>
                 </div>
             <?php
-                }else{
+                } else {
             ?>
                 <div class="login" style="color:black;margin-top: 20px;">
                     <a href="{{URL ::to('/login')}}"><b>Đăng nhập</b></a>
@@ -135,19 +147,19 @@
             <?php
                 }
             ?>
-            <div style="color: black; margin: 20px 10px 20px -60px">
+            <div style="color: black; margin: 20px 10px 20px ">
                 <?php
                 $name = Session::get('customer_name');
-                if($name)
-                {
+                if ($name) {
                     echo $name;
                 }
+
                 ?>
             </div>
             <div class="cart">
                 <a href="{{URL ::to('/show-cart')}}" style="text-decoration: none; color:black;"><i
                         class="fa-solid fa-cart-shopping"></i>
-                    <span id="circle"></span>
+                    <span id="circle">{{ number_format(Cart::getContent()->count()) }}</span>
                 </a>
             </div>
         </div>
@@ -172,11 +184,13 @@
                         <img src="public/images/bannerhome2.png" class="d-block w-100" alt="...">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button"
+                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <button class="carousel-control-next" type="button"
+                 data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -187,13 +201,15 @@
         <div class="container bg-light">
             <div class="row">
                 <div class="col-sm-3">
-                    <nav class="navbar ">
+                    <nav class="navbar " aria-level="" aria-labelledby="">
                         <div class="container">
                             <ul class="navbar-nav">
                                 <h6><b>DANH MỤC SẢN PHẨM</b></h6>
                                 @foreach ($category as $key => $cate)
                                     <li class="nav-item">
-                                        <a class="nav-link" style="color:black" href="{{ URL::to('/category-products/'.$cate->cate_id) }}">{{ $cate->cate_name }}</a>
+                                        <a class="nav-link" style="color:black"
+                                        href="{{ URL::to('/category-products/'.$cate->cate_id) }}">
+                                        {{ $cate->cate_name }}</a>
                                     </li>
                                 @endforeach
 
@@ -215,10 +231,14 @@
             <div class="col">
               <b>DANH MỤC</b>
               <div class="contact">
-                  <div><a href="{{URL ::to('/dashboard')}}" style="text-decoration:none ;color:black;">TRANG CHỦ</a></div>
-                    <div><a href="{{{'pages/introduce.php'}}}" style="text-decoration:none ;color:black;">GIỚI THIỆU</a></div>
-                  <div><a href="{{{'pages/product.php'}}}" style="text-decoration:none ;color:black;">SẢN PHẨM</a></div>
-                  <div><a href="{{{'pages/news.php'}}}" style="text-decoration:none ;color:black;">TIN TỨC</a></div>
+                  <div><a href="{{URL ::to('/dashboard')}}"
+                    style="text-decoration:none ;color:black;">TRANG CHỦ</a></div>
+                    <div><a href="{{{'pages/introduce.php'}}}"
+                         style="text-decoration:none ;color:black;">GIỚI THIỆU</a></div>
+                  <div><a href="{{{'pages/product.php'}}}"
+                     style="text-decoration:none ;color:black;">SẢN PHẨM</a></div>
+                  <div><a href="{{{'pages/news.php'}}}"
+                     style="text-decoration:none ;color:black;">TIN TỨC</a></div>
 
               </div>
             </div>
@@ -255,23 +275,6 @@
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 </footer>
-
-<!-- header-fixed -->
-{{-- <script>
-  $(document).ready(function(){
-    $(window).scroll(function(){
-        if($(this).scrollTop()){
-            $('.header').addClass('fixed');
-        }
-        else{
-            $('.header').removeClass('fixed');
-        }
-    })
-    $('.list').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
-    })
-  })
-</script> --}}
 <script>
 // Get the button
 let mybutton = document.getElementById("myBtn");

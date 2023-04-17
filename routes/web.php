@@ -50,7 +50,7 @@ Route::get('/introduce', function () {
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/home',[HomeController::class, 'index']);
 Route::get('/product',[HomeController::class, 'product']);
-Route::get('/login', [HomeController::class, 'login']);
+Route::post('/search', [HomeController::class, 'search']);
 
 // category products - home
 Route::get('/category-products/{cate_id}',[CategoryProduct::class, 'show_cate_home']);
@@ -100,6 +100,8 @@ Route::post('/reduce-to-cart', [CartController::class, 'reduce_to_cart']);
 Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
 Route::get('/sign-up', [CheckoutController::class, 'sign_up']);
 Route::get('/login', [CheckoutController::class, 'login']);
+Route::post('/login-customer', [CheckoutController::class, 'login_customer']);
+Route::get('/log-out', [CheckoutController::class, 'log_out']);
 Route::post('/add-customer', [CheckoutController::class, 'add_customer']);
 Route::get('/check-out', [CheckoutController::class, 'check_out']);
 Route::get('/delete-to-checkout/{id}', [CheckoutController::class, 'delete_to_checkout']);

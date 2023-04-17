@@ -26,7 +26,7 @@
 <body>
     <div class="login">
 
-        <form action="{{URL::to('/login')}}" method="post"  >
+        <form action="{{URL::to('/login-customer')}}" method="post"  >
             {{ csrf_field() }}
             <div class="wrapper">
                 <div class="container">
@@ -47,10 +47,10 @@
                                 <label for=""><b>Email</b></label>
                                 <br>
                                     <input class="form-input" id="txt-input"
-                                    type="text" name="email" placeholder="" required><br>
+                                    type="email" name="email" placeholder="" required><br>
                                 <label for=""><b>Mật khẩu</b></label> <br>
                                     <input class="form-input" type="password"
-                                    name="password" placeholder="" id="pwd"  name="password" required>
+                                    name="password" placeholder="" id="pwd" required>
                                 <br>
                                 <button type="submit" class="log-in"> <b>ĐĂNG NHẬP</b> </button>
                            </div>

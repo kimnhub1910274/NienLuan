@@ -131,13 +131,13 @@
             </div>
             <?php
                 $customer_id = Session::get('customer_id');
-                if($customer_id != null) {
+                if ($customer_id != null) {
             ?>
                 <div class="login" style="color:black;margin-top: 20px;">
-                    <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất</b></a>
+                    <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất, </b></a>
                 </div>
             <?php
-                }else{
+                } else {
             ?>
                 <div class="login" style="color:black;margin-top: 20px;">
                     <a href="{{URL ::to('/login')}}"><b>Đăng nhập</b></a>
@@ -145,10 +145,10 @@
             <?php
                 }
             ?>
-            <div style="color: black; margin: 20px 10px 20px -60px">
+            <div style="color: black; margin: 20px 10px 20px ">
                 <?php
                 $name = Session::get('customer_name');
-                if($name)
+                if ($name)
                 {
                     echo $name;
                 }
@@ -158,7 +158,7 @@
             <div class="cart">
                 <a href="{{URL ::to('/show-cart')}}" style="text-decoration: none; color:black;"><i
                         class="fa-solid fa-cart-shopping"></i>
-                    <span id="circle"></span>
+                    <span id="circle">{{ number_format(Cart::getContent()->count()) }}</span>
                 </a>
             </div>
         </div>

@@ -82,7 +82,7 @@
                     <span>Danh mục sản phẩm</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="py-2 rounded  collapse-inner bg-light">
+                    <div class="py-2 rounded collapse-inner bg-light">
                         <h6 class="collapse-header" ></h6>
                         <a class="collapse-item"  href="{{URL::to('/list-category-product')}}">Danh sách danh mục</a>
                         <a class="collapse-item" href="{{URL::to('/add-category-product')}}">Thêm danh mục</a>
@@ -233,7 +233,6 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span style="color:black;"><b>
                                     <?php
-                                    {{-- $name = session('admin_name'); --}}
                                     $name = Session::get('admin_name');
                                    if($name){
                                         echo $name;

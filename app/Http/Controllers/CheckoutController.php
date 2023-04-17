@@ -21,11 +21,6 @@ class CheckoutController extends Controller
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
         return view('pages.checkout.sign_up')->with('category', $cate_product);
     }
-    public function login()
-    {
-        $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
-        return view('pages.checkout.login')->with('category', $cate_product);
-    }
     public function add_customer(Request $request)
     {
         $data = array();
@@ -33,14 +28,42 @@ class CheckoutController extends Controller
         $data['customer_email'] = $request->customer_email;
         $data['customer_phone'] = $request->customer_phone;
         $data['customer_address'] = $request->customer_address;
-        $data['customer_password'] = $request->customer_password;
+        $data['customer_password'] = md5($request->customer_password);
 
         $customer_id = DB::table('tbl_customers')->insertGetId($data);
 
         Session::put('customer_id', $customer_id);
         Session::put('customer_name', $request->customer_name);
+        Session::put('customer_phone', $request->customer_phone);
+        Session::put('customer_address', $request->customer_address);
+
         return view('pages.checkout.check_out');
     }
+    public function login()
+    {
+        $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
+        return view('pages.checkout.login')->with('category', $cate_product);
+    }
+    public function login_customer(Request $request)
+    {
+        $email = $request->email;
+        $password = md5($request->password);
+
+        $result = DB::table('tbl_customers')->where('customer_email', $email)
+        ->where('customer_password', $password)->first();
+        if ($result) {
+            session()->regenerate();
+            Session::put('customer_name', $result->customer_name);
+            Session::put('customer_id', $result->customer_id);
+            Session::put('customer_phone', $result->customer_phone);
+            Session::put('customer_address', $result->customer_address);
+
+            return Redirect::to('/home');
+        } else {
+            return Redirect::to('/login_checkout');
+        }
+    }
+
     public function check_out()
     {
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
@@ -64,6 +87,12 @@ class CheckoutController extends Controller
         Cart::clear();
         return Redirect::to('/check-out');
     }
+    public function log_out()
+    {
+        Session::flush();
+        return Redirect::to('/login');
+    }
+
 
 
 }
