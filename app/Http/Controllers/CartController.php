@@ -12,12 +12,13 @@ session_start();
 
 class CartController extends Controller
 {
-    public function save_cart(Request $request){
+    public function save_cart(Request $request)
+    {
         $product_id = $request->product_id_hidden;
-        $quantity =$request->quantity;
-        $product_info = DB::table('tbl_product')->where('product_id',$product_id)->first();
+        $quantity = $request->quantity;
+        $product_info = DB::table('tbl_product')->where('product_id', $product_id)->first();
 
-        $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
+        $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
 
         $data['id'] = $product_info->product_id;
         $data['quantity'] = $quantity;
@@ -29,23 +30,22 @@ class CartController extends Controller
     }
 
 
-    public function cart(){
+    public function cart()
+    {
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
         return view('pages.cart.cart')->with('category',$cate_product);
 
     }
-    public function check_out(){
-        $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
-        return view('pages.cart.check_out')->with('category',$cate_product);
-    }
-    public function delete_to_cart($id){
+
+    public function delete_to_cart($id)
+    {
         Cart::remove($id);
         return Redirect::to('/show-cart');
-
     }
 
 
-    public function increase_to_cart(Request $request){
+    public function increase_to_cart(Request $request)
+    {
         $cart_id = $request->cart_id;
         Cart::update($cart_id, array(
             'quantity' => +1,
@@ -53,7 +53,8 @@ class CartController extends Controller
         return Redirect::to('/show-cart');
 
     }
-    public function reduce_to_cart(Request $request){
+    public function reduce_to_cart(Request $request)
+    {
         $cart_id = $request->cart_id;
         Cart::update($cart_id, array(
             'quantity' => -1,

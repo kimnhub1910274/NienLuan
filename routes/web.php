@@ -5,6 +5,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryProduct;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,13 +28,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-require __DIR__.'/auth.php';
 //Frontend
 Route::get('/news', function () {
     return view('news');
@@ -54,6 +50,8 @@ Route::get('/introduce', function () {
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/home',[HomeController::class, 'index']);
 Route::get('/product',[HomeController::class, 'product']);
+Route::get('/login', [HomeController::class, 'login']);
+
 // category products - home
 Route::get('/category-products/{cate_id}',[CategoryProduct::class, 'show_cate_home']);
 Route::get('/product-detail/{product_id}',[ProductController::class, 'product_detail']);
@@ -93,11 +91,18 @@ Route::get('/off-pro/{product_id}', [ProductController::class, 'off_pro']);
 //cart
 Route::post('/save-cart', [CartController::class, 'save_cart']);
 Route::get('/show-cart', [CartController::class, 'cart']);
-Route::get('/check-out', [CartController::class, 'check_out']);
 Route::get('/delete-to-cart/{id}', [CartController::class, 'delete_to_cart']);
 Route::post('/increase-to-cart', [CartController::class, 'increase_to_cart']);
 Route::post('/reduce-to-cart', [CartController::class, 'reduce_to_cart']);
 
+// checkout
 
+Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
+Route::get('/sign-up', [CheckoutController::class, 'sign_up']);
+Route::get('/login', [CheckoutController::class, 'login']);
+Route::post('/add-customer', [CheckoutController::class, 'add_customer']);
+Route::get('/check-out', [CheckoutController::class, 'check_out']);
+Route::get('/delete-to-checkout/{id}', [CheckoutController::class, 'delete_to_checkout']);
+Route::post('/save-checkout', [CheckoutController::class, 'save_checkout']);
 
 

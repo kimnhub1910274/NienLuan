@@ -29,28 +29,22 @@
                                 <tr>
                                     <td>{{ $value->id }}</td>
                                     <td><a href="{{ URL::to('/product-detail/'.$value->id) }}" >
-                                        <img src="{{ URL::to('public/uploads/product/'.$value->attributes->image) }}" width="100" height="100" style="margin-bottom: 5px" alt="">
+                                        <img src="{{ URL::to('public/uploads/product/'.$value->attributes->image) }}"
+                                        width="100" height="100" style="margin-bottom: 5px" alt="">
 
                                     </a></td>
-                                    <td>{{ $value->name }}</td>
+                                    <td>{{  $value->name }}</td>
                                     <td>{{ $value->quantity}} </td>
                                     <td>{{ number_format($value->price * $value->quantity) }}</td>
-                                    <td><i class="fa-solid fa-trash"></i></td>
+                                    <td>
+                                        <a href="{{ URL::to('/delete-to-checkout/'.$value->id) }}">
+                                            <i class="fa-solid fa-trash"></i></a>
+                                    </td>
                                 </tr>
-
-
-
-                            <!-- <button class="btn btn-success" name="sb" type="submit">Đặt hàng</button> -->
                                 @endforeach
-                                {{-- <tr>
-                                    <td><b>TỔNG TIỀN:</b></td>
-                                    <td colspan="6" class="text-center "><b>{{ number_format(Cart::getSubTotal()) }} VNĐ</b></td>
-                                </tr> --}}
-
-
                             </tbody>
                         </table>
-                        <h5 ><a href="{{ URL::to('/check-out') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a></h5>
+
                     </div>
                 </div>
 
@@ -58,16 +52,33 @@
             <div class="col-4 " >
                 <div class="card">
                     <div class="card-header">
-                        <h6>ĐỊA CHỈ GIAO HÀNG</h6>
+                        <h6>THÔNG TIN GIAO HÀNG</h6>
                     </div>
                     <div class="card-body">
-                        <style>
-                            input{
-                                width: 355px;
-                            }
-                        </style>
-                        <form>
-
+                        <form action="{{ URL::to('/save-checkout') }}" method="POST">
+                             {{ csrf_field() }}
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Họ tên</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" name="order_name"
+                                aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Số điện thoại</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" name="order_phone"
+                                aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Địa chỉ</span>
+                                <input type="text" class="form-control" placeholder="" aria-label=""
+                                name="order_address"
+                                aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Ghi chú</span>
+                                <textarea type="text" class="form-control" placeholder="" name="order_note"></textarea>
+                            </div>
+                            <input type="submit" value="ĐẶT HÀNG" class="btn btn-success"
+                            style="float: right" name="order" ></input>
                         </form>
                     </div>
                 </div>

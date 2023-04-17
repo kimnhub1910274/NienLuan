@@ -8,18 +8,20 @@
             <form action="{{ URL::to('/save-cart') }}" method="post" >
                 {{csrf_field() }}
                 <a href="{{ URL::to('/product-detail/'.$product->product_id) }}" >
-                    <img src="{{ URL::to('public/uploads/product/'.$product->product_image) }}" width="200" height="200" style="margin-bottom: 5px" alt="">
+                    <img src="{{ URL::to('public/uploads/product/'.$product->product_image) }}"
+                     width="200" height="200" style="margin-bottom: 5px" alt="">
                     <p>{{ $product->product_name }}</p>
                     {{-- <span><i class="fa-regular fa-heart"></i></span> --}}
-                    
+                    <input type="hidden" value="{{$product->product_id}}" name="product_id_hidden" />
+
                     <span class="price"><b>Giá: {{ number_format($product->product_price).' '.'VND' }}</b></span>
                 </a>
                     <span>&nbsp;
-                        <button type="submit"><i class="fa-solid fa-cart-plus"></i></button>
+                        <button type="submit" style="border:none "><i class="fa-solid fa-cart-plus"></i></button>
                         </span>
             </form>
         </div>
-        
+
     @endforeach
     </div>
   </div>

@@ -15,7 +15,8 @@ class HomeController extends Controller
     public function index()
     {
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
-        $list_product = DB::table('tbl_product')->where('product_status','1')->orderby('product_id','desc')->limit(4)->get();
+        $list_product = DB::table('tbl_product')->where('product_status','1')->
+        orderby('product_id','desc')->limit(4)->get();
 
         return view('pages.home')->with('category',$cate_product)->with('list_product',$list_product);
     }
@@ -26,5 +27,31 @@ class HomeController extends Controller
 
         return view('pages.product')->with('category',$cate_product)->with('list_product',$list_product);
     }
+    public function login(Request $request){
+        $email = $request->email;
+        $password = md5($request->password);
+
+        $result = DB::table('users')->where('email',$email)
+        ->where('password',$password)->first();
+
+        if($result){
+            session()->regenerate();
+        Session::put('name', $result->name);
+        Session::put('id', $result->id);
+
+
+            return Redirect::to('/checkout');
+
+    }else{
+        $request->session()->put('message','Vui long dang nhap lai!!');
+        return view('welcome');
+        }
+    }
+    public function logout(Request $request){
+        Session::put('name',null);
+        Session::put('id', null);
+    return Redirect::to('/');
+    }
+
 
 }

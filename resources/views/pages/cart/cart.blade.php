@@ -21,7 +21,6 @@
                             <th>Ảnh sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Số lượng</th>
-                            <th>Màu</th>
                             <th>Size</th>
                             <th>Đơn giá</th>
                             <th>Thành tiền</th>
@@ -33,8 +32,7 @@
                             <tr>
                                 <td>{{ $value->id }}</td>
                                 <td><a href="{{ URL::to('/product-detail/'.$value->id) }}" >
-                                    <img src="{{URL::to('public/uploads/product'.$value->attributes->image) }}"
-                                     width="100" height="100" style="margin-bottom: 5px" alt="">
+                                    <img src="{{ URL::to('public/uploads/product/'.$value->attributes->image) }}" width="100" height="100" style="margin-bottom: 5px" alt="">
                                      {{-- {{ $value->name }} --}}
                                 </a></td>
                                 <td>{{ $value->name }}</td>
@@ -57,19 +55,11 @@
                                     </span>
 
                                 </td>
-                                <td>
-                                    <select class="form-select" aria-label="Default select example" style="width:150px;">
-                                        <option selected><p>{{ $value->name }}</p></option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                      </select>
-                                </td>
                                 <td><select class="form-select" aria-label="Default select example" style="width:150px;">
-                                    <option selected><p>{{ $value->name }}</p></option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    {{-- @foreach ($cate_product as $key => $cate)
+                                    <option selected value="{{ $cate->cate_id }}">{{ $cate->cate_name }}</option>
+
+                                    @endforeach --}}
                                   </select></td>
                                 <td>{{ number_format($value->price) }}</td>
                                 <td>{{ number_format($value->price * $value->quantity) }}</td>
@@ -77,7 +67,6 @@
                                     <a href="{{ URL::to('/delete-to-cart/'.$value->id) }}"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
-                            <!-- <button class="btn btn-success" name="sb" type="submit">Đặt hàng</button> -->
 
                         @endforeach
                         <tr>
@@ -88,7 +77,23 @@
 
                     </tbody>
                 </table>
-                <h5 ><a href="{{ URL::to('/check-out') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a></h5>
+
+                <h5 >
+                    <?php
+                        $customer_id = Session::get('customer_id');
+                        if($customer_id != null) {
+                    ?>
+                    <a href="{{ URL::to('/check-out') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
+
+                    <?php
+                        }else{
+                    ?>
+                        <a href="{{ URL::to('/login-checkout') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
+                    <?php
+                        }
+                    ?>
+
+                </h5>
             </div>
         </div>
  </div>

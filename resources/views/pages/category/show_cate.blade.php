@@ -10,7 +10,8 @@
         @foreach ($cate_by_id as $key => $product )
         <div class="col">
             <a href="{{ URL::to('/product-detail/'.$product->product_id) }}" >
-                <img src="{{ URL::to('public/uploads/product/'.$product->product_image) }}" width="200" height="200" style="margin-bottom: 5px" alt="">
+                <img src="{{ URL::to('public/uploads/product/'.$product->product_image) }}"
+                 width="200" height="200" style="margin-bottom: 5px" alt="">
                 <p>{{ $product->product_name }}</p>
                 <span><i class="fa-regular fa-heart"></i></span>
                 <br>

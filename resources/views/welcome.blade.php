@@ -119,6 +119,31 @@
                     </div>
                 </form>
             </div>
+            <?php
+                $customer_id = Session::get('customer_id');
+                if($customer_id != null) {
+            ?>
+                <div class="login" style="color:black;margin-top: 20px;">
+                    <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất,</b></a>
+                </div>
+            <?php
+                }else{
+            ?>
+                <div class="login" style="color:black;margin-top: 20px;">
+                    <a href="{{URL ::to('/login')}}"><b>Đăng nhập</b></a>
+                </div>
+            <?php
+                }
+            ?>
+            <div style="color: black; margin: 20px 10px 20px -60px">
+                <?php
+                $name = Session::get('customer_name');
+                if($name)
+                {
+                    echo $name;
+                }
+                ?>
+            </div>
             <div class="cart">
                 <a href="{{URL ::to('/show-cart')}}" style="text-decoration: none; color:black;"><i
                         class="fa-solid fa-cart-shopping"></i>
@@ -132,9 +157,12 @@
         <div class="container-fluid " style="margin-top:100px;" >
             <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                     <div class="carousel-inner">
                     <div class="carousel-item active">

@@ -1,12 +1,4 @@
-{{--  <?php include('admin_server.php') ;
-if(isset($_POST['username'])){
-    $username=$_POST['username'];
-    $password=$_POST['password'];
-  }
-?>  --}}
-{{-- @section('welcome')
 
-@endsection --}}
 <!DOCTYPE html>
 <html>
     <head>
