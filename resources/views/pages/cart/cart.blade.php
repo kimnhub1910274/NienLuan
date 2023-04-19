@@ -71,28 +71,26 @@
                         @endforeach
                         <tr>
                             <td><b>TỔNG TIỀN:</b></td>
-                            <td colspan="6" class="text-center "><b>{{ number_format(Cart::getSubTotal()) }} VNĐ</b></td>
+                            <td colspan="6" class="text-center "><b>{{ number_format(Cart::getTotal()) }} VNĐ</b></td>
                         </tr>
 
 
                     </tbody>
                 </table>
-
                 <h5 >
                     <?php
                         $customer_id = Session::get('customer_id');
-                        if($customer_id != null) {
+                        $ship_id = Session::get('ship_id');
+                        if($customer_id != null && $ship_id != null && Cart::getContent()->count() == 0) {
                     ?>
-                    <a href="{{ URL::to('/check-out') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
-
+                            <p class="text-center" style="color: red" >Giỏ hàng của bạn trống!! </p>
                     <?php
                         }else{
                     ?>
-                        <a href="{{ URL::to('/login-checkout') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
+                        <a href="{{ URL::to('/check-out') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
                     <?php
                         }
                     ?>
-
                 </h5>
             </div>
         </div>

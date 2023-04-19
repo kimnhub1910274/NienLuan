@@ -31,13 +31,17 @@
             <div class="wrapper">
                 <div class="container">
                   <form class="form">
+                    <a href="javascript:window.history.back()">
+                        <button type="button" class="btn-close" aria-label="Close"
+                        style="float: right; margin-top: -40px"></button>
+                    </a>
                     <div class="overlay" style="width: 400px;
                     margin: 11% -4%;">
                            <div class="con" >
-                           <header class="head-form"><h2>ĐĂNG NHẬP</h2>  </header>
+                           <header class="head-form"><h2>ĐĂNG NHẬP</h2></header>
                            <?php
                                 $message = Session::get('message');
-                                if($message){
+                                if ($message) {
                                     echo $message;
                                     Session::pull('message', null);
                                 }

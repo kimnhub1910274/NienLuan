@@ -4,7 +4,7 @@
 
   <div class="container text-center">
     @foreach ($cate_name as $key => $name)
-        <h4 class="title text-center">{{ $name->cate_name }}</h4>
+        <h4 class="text-center title">{{ $name->cate_name }}</h4>
     @endforeach
     <div class="row">
         @foreach ($cate_by_id as $key => $product )

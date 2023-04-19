@@ -77,15 +77,47 @@ class CheckoutController extends Controller
     public function save_checkout(Request $request)
     {
         $data = array();
-        $data['order_name'] = $request->order_name;
-        $data['order_phone'] = $request->order_phone;
-        $data['order_address'] = $request->order_address;
-        $data['order_note'] = $request->order_note;
+        $data['customer_id'] = $request->customer_id;
+        $data['ship_name'] = $request->ship_name;
+        $data['ship_phone'] = $request->ship_phone;
+        $data['ship_address'] = $request->ship_address;
+        $data['ship_note'] = $request->ship_note;
 
-        $order_id = DB::table('tbl_orders')->insertGetId($data);
-        Session::put('order_id', $order_id);
+        $ship_id = DB::table('tbl_ship')->insertGetId($data);
+        Session::put('ship_id', $ship_id);
+
+       // $content = Cart::getContent();
+       //echo $content;
+
+        $order_data = array();
+        $order_data['customer_id'] = Session::get('customer_id');
+        $order_data['ship_id'] = Session::get('ship_id');
+        $order_data['order_total'] = Cart::getTotal();
+        $order_data['order_status'] = 'Đang chờ xử lý';
+        $order_id = DB::table('tbl_orders')->insertGetId($order_data);
+
+        //insert order_detail
+        $content = Cart::getContent();
+        foreach ( $content as $value){
+            $orders_data = array();
+            $orders_data['order_id'] = $order_id;
+            $orders_data['product_id'] = $value->id;
+            $orders_data['product_name'] = $value->name;
+            $orders_data['product_price'] = $value->price;
+            $orders_data['product_quantity'] = $value->quantity;
+             DB::table('tbl_order_details')->insert($orders_data);
+        }
+
+
         Cart::clear();
-        return Redirect::to('/check-out');
+        return view('pages.cart.cart');
+    }
+    public function order(Request $request)
+    {
+        //insert order
+
+
+        return Redirect::to('/cart');
     }
     public function log_out()
     {

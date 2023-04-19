@@ -2,9 +2,9 @@
 @section('home')
 <title>Tìm kiếm</title>
   <div class="container text-center">
-    <h4 class="text-center title" style="margin-bottom: 20px"><b>SẢN PHẨM MỚI</b></h4>
+    <h4 class="text-center title" style="margin-bottom: 20px"><b>KẾT QUẢ TÌM KIẾM</b></h4>
     <div class="row">
-        {{-- @foreach ($list_product as $key => $product )
+        @foreach ($search_product as $key => $product )
         <div class="col">
             <form action="{{ URL::to('/save-cart') }}" method="post" >
                 {{csrf_field() }}
@@ -40,7 +40,7 @@
 
             }
         </style>
-    @endforeach --}}
+    @endforeach
     </div>
   </div>
 

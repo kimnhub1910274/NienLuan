@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <title>She</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -28,11 +29,10 @@
      crossorigin="anonymous"></script>
     <!-- owl carousel -->
     <script src="owlcarousel/owl.carousel.min.js"></script>
-    <title>She</title>
-
 </head>
 
 <body>
+
     <header class="fixed header" style="margin-bottom: 100px;">
         <div class="container-fluid d-flex justify-content-between" style=" margin: 10px 30px 20px 3px;">
             <!-- logo -->
@@ -83,7 +83,31 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="login">
-                                <a href="login.php" style="text-decoration: none;">Đăng nhập</a>
+                                <?php
+                                    $customer_id = Session::get('customer_id');
+                                    if ($customer_id != null) {
+                                ?>
+                                    <div class="login" style="color:black;margin-top: 20px;">
+                                        <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất,</b></a>
+                                    </div>
+                                <?php
+                                    } else {
+                                ?>
+                                    <div class="login" style="color:black;margin-top: 20px;">
+                                        <a href="{{URL ::to('/login')}}"><b>Đăng nhập</b></a>
+                                    </div>
+                                <?php
+                                    }
+                                ?>
+                                <div style="color: black; margin: 20px 10px 20px ">
+                                    <?php
+                                    $name = Session::get('customer_name');
+                                    if ($name) {
+                                        echo $name;
+                                    }
+
+                                    ?>
+                                </div>
                             </div>
                             <div class="mx-2 d-flex justify-content-end">
 
@@ -93,7 +117,7 @@
                                 <div class="mt-3 dropdown">
                                     <ul class="navbar-nav">
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{URL ::to('/dashboard')}}"
+                                            <a href="{{URL ::to('/home')}}"
                                             style="text-decoration:none;color:black;">TRANG CHỦ</a>
                                         </li>
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
@@ -116,24 +140,32 @@
                     </nav>
                 </div>
                 <!--search-->
-                <form action="index.php?page_layout=search" method="POST" style="margin-top: 20px ;">
+                <form action="{{URL::to('/search')}}" method="POST" style="margin-top: 20px ;">
+                    {{csrf_field()}}
                     <div class="dropdown align-self-center d-sm-none d-md-none d-none d-lg-flex d-xl-flex">
                         <div class="dropdown-content">
                             <div>
-                                <input class="input-search" name="tukhoa" type="text" placeholder="Tìm kiếm">
+                                <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
                             </div>
                         </div>
                         <div>
-                            <button type="submit" name="timkiem" style="border:white ;">
+                            <button type="submit"  name="search" style="border:white ;">
                                 <i class="search fa-solid fa-magnifying-glass"></i>
                             </button>
                         </div>
+                        {{-- <div class="dropdown-content">
+                            <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
+                            <button type="submit"  name="search" style="border:white ;">
+                                <i class="search fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div> --}}
                     </div>
                 </form>
             </div>
             <?php
                 $customer_id = Session::get('customer_id');
-                if ($customer_id != null) {
+                $order_id = Session::get('order_id');
+                if ($customer_id != null && $order_id != null) {
             ?>
                 <div class="login" style="color:black;margin-top: 20px;">
                     <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất,</b></a>
@@ -211,8 +243,8 @@
                                         href="{{ URL::to('/category-products/'.$cate->cate_id) }}">
                                         {{ $cate->cate_name }}</a>
                                     </li>
-                                @endforeach
 
+                                @endforeach
                             </ul>
                         </div>
                     </nav>

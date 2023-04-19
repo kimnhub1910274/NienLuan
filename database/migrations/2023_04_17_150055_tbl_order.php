@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('tbl_orders', function (Blueprint $table) {
             $table->Increments('order_id');
             $table->Integer('customer_id');
-            $table->String('order_name');
-            $table->String('order_address');
-            $table->String('order_phone');
+            $table->Integer('ship_id');
+            $table->String('order_total');
+            $table->String('order_status');
+            $table->String('order_date_time');
             $table->timestamps();
         });
     }

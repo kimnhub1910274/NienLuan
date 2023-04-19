@@ -12,14 +12,13 @@
                         <?php
                         $content = Cart::getContent();
                         ?>
-                        <table class="table">
+                        <table class="table" >
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Mã sản phẩm</th>
                                     <th>Ảnh sản phẩm</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Số lượng</th>
-                                    {{-- <th>Đơn giá</th> --}}
                                     <th>Thành tiền</th>
                                     <th>Xóa</th>
                                 </tr>
@@ -55,6 +54,7 @@
                         <h6>THÔNG TIN GIAO HÀNG</h6>
                     </div>
                     <?php
+                        $customer_id = Session::get('customer_id');
                         $customer_name = Session::get('customer_name');
                         $customer_phone = Session::get('customer_phone');
                         $customer_address = Session::get('customer_address');
@@ -63,25 +63,30 @@
 
                         <form action="{{ URL::to('/save-checkout') }}" method="POST">
                             {{ csrf_field() }}
+                            <div class="mb-3 input-group">
+                                <input type="hidden" class="form-control" placeholder=""
+                                aria-label="" name="customer_id"
+                                aria-describedby="basic-addon1" value="{{ $customer_id }}">
+                            </div>
                            <div class="mb-3 input-group">
                                <span class="input-group-text" id="basic-addon1">Họ tên</span>
-                               <input type="text" class="form-control" placeholder="" aria-label="" name="order_name"
+                               <input type="text" class="form-control" placeholder="" aria-label="" name="ship_name"
                                aria-describedby="basic-addon1" value="{{ $customer_name }}">
                            </div>
                            <div class="mb-3 input-group">
                                <span class="input-group-text" id="basic-addon1">Số điện thoại</span>
-                               <input type="text" class="form-control" placeholder="" aria-label="" name="order_phone"
+                               <input type="text" class="form-control" placeholder="" aria-label="" name="ship_phone"
                                aria-describedby="basic-addon1" value="{{ $customer_phone }}">
                            </div>
                            <div class="mb-3 input-group">
                                <span class="input-group-text" id="basic-addon1">Địa chỉ</span>
                                <input type="text" class="form-control" placeholder="" aria-label=""
-                               name="order_address"
+                               name="ship_address"
                                aria-describedby="basic-addon1" value="{{ $customer_address }}">
                            </div>
                            <div class="mb-3 input-group">
                                <span class="input-group-text" id="basic-addon1">Ghi chú</span>
-                               <textarea type="text" class="form-control" placeholder="" name="order_note"></textarea>
+                               <textarea type="text" class="form-control" placeholder="" name="ship_note"></textarea>
                            </div>
                            <input type="submit" value="ĐẶT HÀNG" class="btn btn-success"
                            style="float: right" name="order" ></input>
@@ -95,8 +100,9 @@
                         <h6>TÓM TẮT ĐƠN HÀNG</h6>
                     </div>
                     <div class="card-body">
-                        <p>Giá trị đơn hàng: {{ number_format(Cart::getSubTotal()) }} VNĐ</p>
-                        <p>Phí giao hàng: Miễn phí</p>
+                        <p><b>Giá trị đơn hàng:</b> {{ number_format(Cart::getSubTotal()) }} VNĐ</p>
+                        <p><b>Phí giao hàng:</b> Miễn phí</p>
+                        <p><b>Hình thức:</b> Thanh toán khi nhận hàng</p>
                     </div>
                 </div>
             </div>

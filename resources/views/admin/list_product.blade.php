@@ -27,15 +27,16 @@
 
             @foreach ( $list_product as $key => $product)
                 <tr>
-                    <th ><?php echo $key+1;?></th>
+                    <th scope=""><?php echo $key+1;?></th>
                     <td>{{$product->product_name}}</td>
-                    <td><img src="public/uploads/product/{{$product->product_image}}" height="100" width="100"></td>
+                    <td><img alt="" src="public/uploads/product/{{$product->product_image}}"
+                         height="100" width="100"></td>
                     <td>{{$product->product_price}}</td>
                     <td>{{$product->product_desc}}</td>
                     <td>{{$product->cate_name}}</td>
                     <td>
                         <?php
-                            if($product->product_status == 0){
+                            if ($product->product_status == 0) {
                         ?>
                         <a href="{{URL::to('/off-pro/'.$product->product_id)}}">
                             <span>
@@ -43,7 +44,7 @@
                             </span>
                         </a>
                         <?php
-                            }else{
+                            } else {
                         ?>
                             <a href="{{URL::to('/on-pro/'.$product->product_id)}}">
                                 <span>
@@ -68,7 +69,8 @@
                             <i class="fa-solid fa-pen-to-square"></i>
 
                         </a>
-                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục {{$product->product_name}} ?')"href="{{URL::to('/delete-product/'.$product->product_id)}}">
+                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục
+                        {{$product->product_name}} ?')"href="{{URL::to('/delete-product/'.$product->product_id)}}">
                             <i class="fa-solid fa-trash red"></i>
 
                         </a>

@@ -1,6 +1,5 @@
 @extends('welcome')
 @section('home')
-
   <div class="container text-center">
     <h4 class="text-center title" style="margin-bottom: 20px"><b>SẢN PHẨM MỚI</b></h4>
     <div class="row">
