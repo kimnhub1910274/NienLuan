@@ -80,14 +80,17 @@
                 <h5 >
                     <?php
                         $customer_id = Session::get('customer_id');
+                       // echo $customer_id;
                         $ship_id = Session::get('ship_id');
-                        if($customer_id != null && $ship_id != null && Cart::getContent()->count() == 0) {
+                        if($customer_id == null && Cart::getContent()->count() == 0) {
                     ?>
-                            <p class="text-center" style="color: red" >Giỏ hàng của bạn trống!! </p>
+                            <p class="text-center" style="color: red" >Giỏ hàng của bạn trống! Hãy đăng nhập để mua sắm. </p>
+                            <a href="{{ URL::to('/login-checkout') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
                     <?php
-                        }else{
+                        }else {
                     ?>
-                        <a href="{{ URL::to('/check-out') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
+
+                    <a href="{{ URL::to('/check-out') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
                     <?php
                         }
                     ?>

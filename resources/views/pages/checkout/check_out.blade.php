@@ -88,10 +88,15 @@
                                <span class="input-group-text" id="basic-addon1">Ghi chú</span>
                                <textarea type="text" class="form-control" placeholder="" name="ship_note"></textarea>
                            </div>
-                           <input type="submit" value="ĐẶT HÀNG" class="btn btn-success"
-                           style="float: right" name="order" ></input>
+                           <?php
+                            if (Cart::getContent()->count() > 0) {
+                                ?>
+                                <input type="submit" value="ĐẶT HÀNG" class="btn btn-success"
+                                style="float: right" name="order" ></input>
+                                <?php
+                            }
+                           ?>
                        </form>
-
                     </div>
                 </div>
 

@@ -31,7 +31,7 @@
                         {{csrf_field() }}
                         <p> <b>Giá:</b> {{number_format($value->product_price)}} VND</p>
                         <label><b>Số lượng:</b></label>
-                        <input type="number" value="" name="quantity" style="width:50px ;" min="1" />
+                        <input type="number" value="1" name="quantity" style="width:50px ;" min="1" />
                         <input type="hidden" value="{{$value->product_id}}"
                         name="product_id_hidden" style="width:50px;" />
                         <br>

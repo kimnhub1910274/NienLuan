@@ -42,11 +42,12 @@ class ProductController extends Controller
         // echo '<pre>';
         // print_r($data);
         // echo '</pre>';
-        if($get_img){
+        if ( $get_img )
+        {
             $get_name_img = $get_img->getClientOriginalName();
-            $name_img = current(explode('.',$get_name_img));
+            $name_img = current(explode('.', $get_name_img));
             $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
-            $get_img->move('public/uploads/product',$new_img);
+            $get_img->move('public/uploads/product', $new_img);
             $data['product_image'] = $new_img;
             DB::table('tbl_product')->insert($data);
             Session::put('message', 'Thêm thành công');
