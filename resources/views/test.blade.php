@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Thanh toán</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,15 +137,25 @@
                     </nav>
                 </div>
                 <!--search-->
-                <form action="{{ URL::to('/search') }}" method="POST" style="margin-top: 20px ;">
-                    {{ csrf_field() }}
+                <form action="{{URL::to('/search')}}" method="POST" style="margin-top: 20px ;">
+                    {{csrf_field()}}
                     <div class="dropdown align-self-center d-sm-none d-md-none d-none d-lg-flex d-xl-flex">
                         <div class="dropdown-content">
-                            <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
+                            <div>
+                                <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
+                            </div>
                         </div>
+                        <div>
                             <button type="submit"  name="search" style="border:white ;">
                                 <i class="search fa-solid fa-magnifying-glass"></i>
                             </button>
+                        </div>
+                        {{-- <div class="dropdown-content">
+                            <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
+                            <button type="submit"  name="search" style="border:white ;">
+                                <i class="search fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div> --}}
                     </div>
                 </form>
             </div>
@@ -196,14 +205,16 @@
             <div class="col">
               <b>DANH MỤC</b>
               <div class="contact">
-                  <div><a href="{{URL ::to('/home')}}" style="text-decoration:none ;color:black;">TRANG CHỦ</a></div>
-                    <div><a href="{{{'pages/introduce.php'}}}"
-                         style="text-decoration:none ;color:black;">GIỚI THIỆU</a></div>
-                  <div><a href="{{{'pages/product.php'}}}"
-                    style="text-decoration:none ;color:black;">SẢN PHẨM</a></div>
-                  <div><a href="{{{'pages/news.php'}}}" style="text-decoration:none ;color:black;">TIN TỨC</a></div>
+                <div><a href="{{URL ::to('/home')}}"
+                  style="text-decoration:none ;color:black;">TRANG CHỦ</a></div>
+                  <div><a href="{{URL ::to('/introduce')}}"
+                       style="text-decoration:none ;color:black;">GIỚI THIỆU</a></div>
+                <div><a href="{{URL ::to('/product')}}"
+                   style="text-decoration:none ;color:black;">SẢN PHẨM</a></div>
+                <div><a href="{{URL ::to('/news')}}"
+                   style="text-decoration:none ;color:black;">TIN TỨC</a></div>
 
-              </div>
+            </div>
             </div>
             <div class="col">
               <b>ĐỊA CHỈ</b>

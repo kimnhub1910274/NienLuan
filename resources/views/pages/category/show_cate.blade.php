@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('home')
 
-
+<title>Sản phẩm theo danh mục</title>
   <div class="container text-center">
     @foreach ($cate_name as $key => $name)
         <h4 class="text-center title">{{ $name->cate_name }}</h4>

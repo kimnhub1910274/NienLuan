@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>She</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -164,11 +163,10 @@
             </div>
             <?php
                 $customer_id = Session::get('customer_id');
-                $order_id = Session::get('order_id');
-                if ($customer_id != null && $order_id != null) {
+                if ($customer_id != null) {
             ?>
                 <div class="login" style="color:black;margin-top: 20px;">
-                    <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất,</b></a>
+                    <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất, </b></a>
                 </div>
             <?php
                 } else {
@@ -182,10 +180,10 @@
             <div style="color: black; margin: 20px 10px 20px ">
                 <?php
                 $name = Session::get('customer_name');
-                if ($name) {
+                if ($name)
+                {
                     echo $name;
                 }
-
                 ?>
             </div>
             <div class="cart">
@@ -263,13 +261,13 @@
             <div class="col">
               <b>DANH MỤC</b>
               <div class="contact">
-                  <div><a href="{{URL ::to('/dashboard')}}"
+                  <div><a href="{{URL ::to('/home')}}"
                     style="text-decoration:none ;color:black;">TRANG CHỦ</a></div>
-                    <div><a href="{{{'pages/introduce.php'}}}"
+                    <div><a href="{{URL ::to('/introduce')}}"
                          style="text-decoration:none ;color:black;">GIỚI THIỆU</a></div>
-                  <div><a href="{{{'pages/product.php'}}}"
+                  <div><a href="{{URL ::to('/product')}}"
                      style="text-decoration:none ;color:black;">SẢN PHẨM</a></div>
-                  <div><a href="{{{'pages/news.php'}}}"
+                  <div><a href="{{URL ::to('/news')}}"
                      style="text-decoration:none ;color:black;">TIN TỨC</a></div>
 
               </div>

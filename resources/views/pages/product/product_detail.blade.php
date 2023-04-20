@@ -1,5 +1,6 @@
 @extends('welcome')
 @section('home')
+<title>Chi tiết sản phẩm</title>
 @foreach ($product_details as $key => $value )
 <div class="container product-details"><!--product-details-->
     <div class="row">

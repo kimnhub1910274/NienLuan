@@ -1,6 +1,5 @@
 @extends('test')
-@section('test')
-
+    <title>Giới thiệu</title>
     <body>
         <main>
             <div class="container">
@@ -39,5 +38,3 @@
         </main>
     </body>
 
-
-@endsection
