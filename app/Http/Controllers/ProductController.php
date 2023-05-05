@@ -13,14 +13,15 @@ class ProductController extends Controller
 {
     public function add_product()
     {
-        $cate_product = DB::table('tbl_cate_pro')->orderby('cate_id','desc')->get();
+        $cate_product = DB::table('tbl_cate_pro')->orderby('cate_id', 'desc')->get();
         return view('admin.add_product')->with('cate_product', $cate_product);
     }
 
     public function list_product()
     {
         $list_product = DB::table('tbl_product')
-        ->join('tbl_cate_pro','tbl_cate_pro.cate_id','=','tbl_product.category_id')
+        ->join('tbl_cate_pro', 'tbl_cate_pro.cate_id','=','tbl_product.category_id')
+        ->where('cate_status', 1)
         ->orderby('tbl_product.product_id')->get();
         $manager = view('admin.list_product')->with('list_product', $list_product);
 
@@ -72,12 +73,13 @@ class ProductController extends Controller
 
     public function off_pro($product_id)
     {
-        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>1]);
+        DB::table('tbl_product')->where('product_id', $product_id)->update(['product_status'=>1]);
         Session::put('message', 'Hiện sản phẩm');
         return Redirect::to('list-product');
     }
-    public function edit_product($product_id){
-        $cate_product = DB::table('tbl_cate_pro')->orderby('cate_id','desc')->get();
+    public function edit_product($product_id)
+    {
+        $cate_product = DB::table('tbl_cate_pro')->orderby('cate_id', 'desc')->get();
         $edit_product = DB::table('tbl_product')->where('product_id', $product_id)->get();
         $manager_product = view('admin.edit_product')->with('edit_product', $edit_product)->with('cate_product',$cate_product);
 
