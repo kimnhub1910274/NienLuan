@@ -2,6 +2,14 @@
 @section('test')
 <title>Giỏ hàng</title>
 <div class="container" style="margin-bottom: 30px;margin-top: 120px;">
+    <?php
+        $ship_id = Session::get('ship_id');
+        $customer_id = Session::get('customer_id');
+        if($customer_id ) {
+        ?>
+            <button class="btn btn-danger">Xem lịch sử đơn hàng</button>
+        <?php }
+        ?>
         <div class="card">
             <div class="card-header">
                 <h4>Danh sách sản phẩm</h4>
@@ -21,7 +29,6 @@
                             <th>Ảnh sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Số lượng</th>
-                            <th>Size</th>
                             <th>Đơn giá</th>
                             <th>Thành tiền</th>
                             <th>Xóa</th>
@@ -55,12 +62,7 @@
                                     </span>
 
                                 </td>
-                                <td><select class="form-select" aria-label="Default select example" style="width:150px;">
-                                    {{-- @foreach ($cate_product as $key => $cate)
-                                    <option selected value="{{ $cate->cate_id }}">{{ $cate->cate_name }}</option>
 
-                                    @endforeach --}}
-                                  </select></td>
                                 <td>{{ number_format($value->price) }}</td>
                                 <td>{{ number_format($value->price * $value->quantity) }}</td>
                                 <td>
@@ -80,11 +82,10 @@
                 <h5 >
                     <?php
                         $customer_id = Session::get('customer_id');
-                       // echo $customer_id;
                         $ship_id = Session::get('ship_id');
-                        if($customer_id == null && Cart::getContent()->count() == 0) {
+                        if($customer_id == null ) {
                     ?>
-                            <p class="text-center" style="color: red" >Giỏ hàng của bạn trống! Hãy đăng nhập để mua sắm. </p>
+                            <p class="text-center" style="color: red" > Hãy đăng nhập để mua sắm. </p>
                             <a href="{{ URL::to('/login-checkout') }}" class="btn btn-success" style="float:right ;"><b>ĐẶT HÀNG</b></a>
                     <?php
                         }else {
@@ -97,6 +98,7 @@
                 </h5>
             </div>
         </div>
+
  </div>
  <style>
     .btt{

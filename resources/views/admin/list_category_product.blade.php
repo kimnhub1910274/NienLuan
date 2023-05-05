@@ -1,7 +1,8 @@
 @extends('admin_dashboard')
 @section('admin_content')
 
-<div class="container-fluid">
+<div class="container-fluid card">
+    &nbsp;
     <h3>DANH SÁCH DANH MỤC </h3>
     <?php
     $message = Session::get('message');
@@ -67,6 +68,7 @@
                             <i class="fa-solid fa-trash red"></i>
 
                         </a>
+                    </td>
                 </tr>
             @endforeach
 

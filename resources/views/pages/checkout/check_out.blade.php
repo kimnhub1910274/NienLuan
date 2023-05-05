@@ -1,6 +1,9 @@
 @extends('test')
 @section('test')
 <title>Thanh toán</title>
+<script type="text/javascript">
+
+</script>
 <div class="container" style="margin-bottom: 30px; margin-top:120px;">
         <div class="row">
             <div class="col-8">
@@ -86,7 +89,8 @@
                            </div>
                            <div class="mb-3 input-group">
                                <span class="input-group-text" id="basic-addon1">Ghi chú</span>
-                               <textarea type="text" class="form-control" placeholder="" name="ship_note"></textarea>
+                               <textarea type="text" class="form-control"
+                               placeholder="" name="ship_note" required></textarea>
                            </div>
                            <?php
                             if (Cart::getContent()->count() > 0) {

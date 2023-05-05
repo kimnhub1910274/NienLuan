@@ -114,15 +114,37 @@ class CheckoutController extends Controller
     }
     public function order(Request $request)
     {
-        //insert order
-
-
         return Redirect::to('/cart');
     }
     public function log_out()
     {
         Session::flush();
         return Redirect::to('/login');
+    }
+    public function manage_order()
+    {
+        $list_order = DB::table('tbl_orders')
+        ->join('tbl_customers', 'tbl_orders.customer_id', '=', 'tbl_customers.customer_id')
+        ->select('tbl_orders.*', 'tbl_customers.customer_name')
+        ->orderBy('tbl_orders.order_id', 'desc')
+        ->get();
+        $manager_order = view('admin.manage_order')->with('list_order', $list_order);
+
+        return view('admin_dashboard')->with('admin.manage_order', $manager_order);
+
+    }
+    public function view_order($orderId){
+        $order_byId = DB::table('tbl_orders')
+        ->join('tbl_customers', 'tbl_orders.customer_id', '=', 'tbl_customers.customer_id')
+        ->join('tbl_ship', 'tbl_orders.ship_id', '=', 'tbl_ship.ship_id')
+        ->join('tbl_order_details', 'tbl_orders.order_id', '=', 'tbl_order_details.order_id')
+
+        ->select('tbl_orders.*', 'tbl_customers.*', 'tbl_ship.*', 'tbl_order_details.*')
+        ->first();
+        $manager_orderId = view('admin.view_order')->with('order_byId', $order_byId);
+
+        return view('admin_dashboard')->with('admin.view_order', $manager_orderId);
+
     }
 
 

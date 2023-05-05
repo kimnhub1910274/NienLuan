@@ -1,7 +1,8 @@
 @extends('admin_dashboard')
 @section('admin_content')
 
-<div class="container-fluid">
+<div class="container-fluid card">
+    &nbsp;
     <h3>DANH SÁCH SẢN PHẨM</h3>
     <?php
     $message = Session::get('message');
