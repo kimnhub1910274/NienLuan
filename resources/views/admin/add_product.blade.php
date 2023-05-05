@@ -21,11 +21,13 @@
                         {{ csrf_field() }}
                         <div class="mb-3">
                             <label  class="form-label"><b>Tên sản phẩm</b></label>
-                            <input type="text" class="form-control" name="product_name" placeholder="">
+                            <input type="text" class="form-control" data-validation-error-msg="Vui lòng nhập tên"
+                            name="product_name" placeholder="">
                         </div>
                         <div class="mb-3">
                             <label  class="form-label"><b>Hình ảnh sản phẩm</b></label>
-                            <input type="file" class="form-control" name="product_image" placeholder="">
+                            <input type="file" class="form-control" data-validation-error-msg="Vui chèn hình ảnh"
+                             name="product_image" placeholder="">
                         </div>
                         <div class="mb-3">
                             <label  class="form-label"><b>Giá sản phẩm</b></label>
@@ -43,7 +45,7 @@
                                         <option selected value="{{ $cate->cate_id }}">{{ $cate->cate_name }}</option>
 
                                     @endforeach
-                            </select>
+                                </select>
                             </div>
                             <div class="col mb">
                                 <label for=""><b>Hiển thị</b></label>
@@ -52,25 +54,17 @@
                                     <option value="0">Ẩn</option>
                                 </select>
                             </div>
+                            <div class="col">
+                                <label  class="form-label"><b>Số lượng</b></label>
+                                <input class="form-control" style="resize:none;" type="number" min="1"
+                                name="product_quantity" rows="3"></input>
+                            </div>
                         </div>
                         <br>
                         <button class="add btn btn-primary" type="submit" name="add-pro">Thêm sản phẩm</button>
 <style>
-    .mb-3{
-        width: 60%;
-    }
-    .panel-body{
-        margin-left: 30%;
-    }
-    .form-select{
-        width: 150px;
-    }
-    .mb{
-        margin-left: -150px;
-    }
-    .add{
-        margin-bottom: 10px
-
+    .card{
+        padding: 20px 200px  ;
     }
 
 </style>

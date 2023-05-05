@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Cart;
 session_start();
+use App\Ship;
+use App\Order;
 
 class CheckoutController extends Controller
 {
@@ -93,8 +95,9 @@ class CheckoutController extends Controller
         $order_data['customer_id'] = Session::get('customer_id');
         $order_data['ship_id'] = Session::get('ship_id');
         $order_data['order_total'] = Cart::getTotal();
-        $order_data['order_status'] = 'Đang chờ xử lý';
-        $order_data['created_at'] = $request->created_at;
+        $order_data['order_status'] = 1;
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $order_data['created_at'] = now();
         $order_id = DB::table('tbl_orders')->insertGetId($order_data);
 
         //insert order_detail
@@ -153,8 +156,6 @@ class CheckoutController extends Controller
         $manager_orderId = view('admin.view_order')->with('order_byId', $order_byId);
 
         return view('admin_dashboard')->with('admin.view_order', $manager_orderId);
-
-
     }
 
 

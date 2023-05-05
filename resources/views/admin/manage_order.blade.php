@@ -16,21 +16,29 @@
           <tr>
             <th scope="col">STT</th>
             <th>Mã đơn hàng</th>
+            <th>Mã khách hàng</th>
             <th scope="col">Tổng tiền</th>
             <th scope="col">Trạng thái</th>
             <th scope="col">Ngày đặt</th>
-            <th scope="col">Hiển Thị</th>
+            <th scope="col">Hiển thị</th>
 
           </tr>
         </thead>
         <tbody>
 
-            @foreach ( $list_order as $key => $order)
+            @foreach ( $all_order as $key => $order)
                 <tr>
                     <th scope="" ><?php echo $key+1;?></th>
                     <td>{{$order->order_id}}</td>
+                    <td>{{$order->customer_id}}</td>
                     <td>{{number_format($order->order_total)}}</td>
-                    <td>{{$order->order_status}}</td>
+                    <td>
+                        @if ($order->order_status == 1)
+                            Đang xử lý
+                        @else
+                            Đã xử lý
+                        @endif
+                        </td>
                     <td>{{$order->created_at}}</td>
                     <td>
                         <a href="{{URL::to('/view-order/'.$order->order_id)}}" style="text-decoration: none">

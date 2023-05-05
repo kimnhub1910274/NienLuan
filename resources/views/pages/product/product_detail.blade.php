@@ -28,7 +28,7 @@
                     <p><b>Mô tả:</b> {{$value->product_desc}}</p>
                     <p><b>Danh mục:</b> {{$value->cate_name}}</p>
                     <p><b>Tình trạng:</b> Còn hàng</p>
-                    <form action="{{ URL::to('/save-cart') }}" method="post">
+                    <form action="{{ URL::to('/save-cartt') }}" method="post">
                         {{csrf_field() }}
                         <p> <b>Giá:</b> {{number_format($value->product_price)}} VND</p>
                         <label><b>Số lượng:</b></label>

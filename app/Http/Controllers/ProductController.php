@@ -19,7 +19,6 @@ class ProductController extends Controller
 
     public function list_product()
     {
-      //  $this->AuthLogin();
         $list_product = DB::table('tbl_product')
         ->join('tbl_cate_pro','tbl_cate_pro.cate_id','=','tbl_product.category_id')
         ->orderby('tbl_product.product_id')->get();
@@ -37,13 +36,11 @@ class ProductController extends Controller
         $data['product_desc'] = $request->product_desc;
         $data['category_id'] = $request->product_cate;
         $data['product_status'] = $request->product_status;
+        $data['product_quantity'] = $request->product_quantity;
 
         $get_img = $request->file('product_image');
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
-        if ( $get_img )
-        {
+
+        if ($get_img) {
             $get_name_img = $get_img->getClientOriginalName();
             $name_img = current(explode('.', $get_name_img));
             $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
@@ -97,6 +94,7 @@ class ProductController extends Controller
         $data['product_desc'] = $request->product_desc;
         $data['category_id'] = $request->product_cate;
         $data['product_status'] = $request->product_status;
+        $data['product_quantity'] = $request->product_quantity;
 
         $get_img = $request->file('product_image');
         if($get_img){
@@ -105,12 +103,12 @@ class ProductController extends Controller
             $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
             $get_img->move('public/uploads/product',$new_img);
             $data['product_image'] = $new_img;
-            DB::table('tbl_product')->where('product_id',$product_id)->update($data);
-            Session::put('message', 'Cập nhật sản phẩm thành công');
+            DB::table('tbl_product')->where('product_id', $product_id)->update($data);
+            Session::put('message', 'Cập nhật sản phẩm không thành công');
             return Redirect::to('list-product');
         }
-        DB::table('tbl_product')->where('product_id',$product_id)->update($data);
-        Session::put('message', 'Cập nhật sản phẩm không thành công');
+        DB::table('tbl_product')->where('product_id', $product_id)->update($data);
+        Session::put('message', 'Cập nhật sản phẩm thành công');
         return Redirect::to('list-product');
 
 

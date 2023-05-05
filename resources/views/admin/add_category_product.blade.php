@@ -26,7 +26,8 @@
                         </div>
                         <div class="mb-3">
                             <label  class="form-label"><b>Mô tả</b></label>
-                            <textarea class="form-control" style="resize:none;" name="cate_pro_decr" rows="3"></textarea>
+                            <textarea class="form-control" style="resize:none;"
+                             name="cate_pro_decr" rows="3"></textarea>
                         </div>
                        <div class="row">
                             <div class="col">
@@ -37,24 +38,20 @@
                                 </select>
                             </div>
                             <div class="col">
+                                <br>
                                 <label for=""></label>
-                                <button class="add btn btn-primary"  type="submit" name="add-cate-pro">Thêm danh mục</button>
+                                <button class="add btn btn-primary"  type="submit"
+                                 name="add-cate-pro">Thêm danh mục</button>
                             </div>
                        </div>
 <style>
-    .mb-3{
-        width: 60%;
+    .card{
+        padding: 20px 300px
     }
-    .panel-body{
-        margin-left: 30%;
+    button.add.btn.btn-primary {
+        margin-top: 8px;
     }
-    .form-select{
-        width: 150px;
-    }
-    .add{
-        margin-left: -74px;
-        margin-top: 32px;
-    }
+
 </style>
                     </form>
                 </div>

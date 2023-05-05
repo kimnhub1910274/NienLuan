@@ -21,6 +21,7 @@
             <th scope="col">Mô tả </th>
             <th scope="col">Danh mục</th>
             <th scope="col">Hiển thị</th>
+            <th scope="col">Số lượng</th>
             <th scope="col">Sửa</th>
           </tr>
         </thead>
@@ -65,6 +66,7 @@
                             }
                         </style>
                     </td>
+                    <td>{{$product->product_quantity}}</td>
                     <td>
                         <a href="{{URL::to('/edit-product/'.$product->product_id)}}">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -75,6 +77,7 @@
                             <i class="fa-solid fa-trash red"></i>
 
                         </a>
+                    </td>
                 </tr>
             @endforeach
 

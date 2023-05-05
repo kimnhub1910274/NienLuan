@@ -38,7 +38,11 @@
                         </div>
                       </div>
                     </td>
-                    <td>{{ $order_byId->product_quantity }}</td>
+                    <td><input type="number" min="1" name="product_quantityy" style="width:40px"
+                        value="{{ $order_byId->product_quantity }}">
+                        <button class="btn btn-success" name="update_quantity"
+                        >Cập nhật</button>
+                    </td>
                     <td class="text-end">{{ $order_byId->product_price }}</td>
                   </tr>
 

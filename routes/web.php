@@ -6,19 +6,10 @@ use App\Http\Controllers\CategoryProduct;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,14 +38,14 @@ Route::get('/introduce', function () {
 });
 
 
-Route::get('/',[HomeController::class, 'index']);
-Route::get('/home',[HomeController::class, 'index']);
-Route::get('/product',[HomeController::class, 'product']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+Route::get('/product', [HomeController::class, 'product']);
 Route::post('/search', [HomeController::class, 'search']);
 
 // category products - home
-Route::get('/category-products/{cate_id}',[CategoryProduct::class, 'show_cate_home']);
-Route::get('/product-detail/{product_id}',[ProductController::class, 'product_detail']);
+Route::get('/category-products/{cate_id}', [CategoryProduct::class, 'show_cate_home']);
+Route::get('/product-detail/{product_id}', [ProductController::class, 'product_detail']);
 
 
 //Backend
@@ -88,6 +79,8 @@ Route::get('/off-pro/{product_id}', [ProductController::class, 'off_pro']);
 
 //cart
 Route::post('/save-cart', [CartController::class, 'save_cart']);
+Route::post('/save-cartt', [CartController::class, 'save_cartt']);
+
 Route::get('/show-cart', [CartController::class, 'cart']);
 Route::get('/delete-to-cart/{id}', [CartController::class, 'delete_to_cart']);
 Route::post('/increase-to-cart', [CartController::class, 'increase_to_cart']);
@@ -109,9 +102,11 @@ Route::post('/order', [CheckoutController::class, 'order']);
 
 
 //orders
-Route::get('/manage-order', [CheckoutController::class, 'manage_order']);
-Route::get('/manage-customer', [CheckoutController::class, 'manage_customer']);
-Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
+Route::get('/manage-order', [OrderController::class, 'manage_order']);
+Route::get('/manage-customer', [OrderController::class, 'manage_customer']);
+
+Route::get('/ordered/{customerId}', [OrderController::class, 'ordered']);
+
 
 
 

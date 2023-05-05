@@ -92,6 +92,7 @@
                                <textarea type="text" class="form-control"
                                placeholder="" name="ship_note" required></textarea>
                            </div>
+                        </div>
                            <?php
                             if (Cart::getContent()->count() > 0) {
                                 ?>

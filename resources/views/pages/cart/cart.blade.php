@@ -7,7 +7,10 @@
         $customer_id = Session::get('customer_id');
         if($customer_id ) {
         ?>
-            <button class="btn btn-danger">Xem lịch sử đơn hàng</button>
+            <a href="{{ URL::to('/ordered/'.$customer_id) }}">
+                <button class="btn btn-danger">Xem lịch sử đơn hàng</button>
+
+            </a>
         <?php }
         ?>
         <div class="card">

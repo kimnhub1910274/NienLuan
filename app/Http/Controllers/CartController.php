@@ -21,6 +21,22 @@ class CartController extends Controller
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
 
         $data['id'] = $product_info->product_id;
+        $data['quantity'] = $quantity + 1;
+        $data['name'] = $product_info->product_name;
+        $data['price'] = $product_info->product_price;
+        $data['attributes']['image'] = $product_info->product_image;
+        Cart::add($data);
+        return Redirect::to('/show-cart');
+    }
+    public function save_cartt(Request $request)
+    {
+        $product_id = $request->product_id_hidden;
+        $quantity = $request->quantity;
+        $product_info = DB::table('tbl_product')->where('product_id', $product_id)->first();
+
+        $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
+
+        $data['id'] = $product_info->product_id;
         $data['quantity'] = $quantity;
         $data['name'] = $product_info->product_name;
         $data['price'] = $product_info->product_price;
@@ -33,7 +49,7 @@ class CartController extends Controller
     public function cart()
     {
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
-        return view('pages.cart.cart')->with('category',$cate_product);
+        return view('pages.cart.cart')->with('category', $cate_product);
 
     }
 
