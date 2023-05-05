@@ -110,6 +110,7 @@ Route::post('/order', [CheckoutController::class, 'order']);
 
 //orders
 Route::get('/manage-order', [CheckoutController::class, 'manage_order']);
+Route::get('/manage-customer', [CheckoutController::class, 'manage_customer']);
 Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
 
 

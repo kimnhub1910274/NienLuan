@@ -15,11 +15,11 @@
         <thead>
           <tr>
             <th scope="col">STT</th>
-            <th scope="col">Tên khách hàng</th>
+            <th>Mã đơn hàng</th>
             <th scope="col">Tổng tiền</th>
             <th scope="col">Trạng thái</th>
-            <th scope="col">Hiển Thị</th>
             <th scope="col">Ngày đặt</th>
+            <th scope="col">Hiển Thị</th>
 
           </tr>
         </thead>
@@ -28,9 +28,10 @@
             @foreach ( $list_order as $key => $order)
                 <tr>
                     <th scope="" ><?php echo $key+1;?></th>
-                    <td>{{$order->customer_name}}</td>
+                    <td>{{$order->order_id}}</td>
                     <td>{{number_format($order->order_total)}}</td>
                     <td>{{$order->order_status}}</td>
+                    <td>{{$order->created_at}}</td>
                     <td>
                         <a href="{{URL::to('/view-order/'.$order->order_id)}}" style="text-decoration: none">
                             <i class="fa fa-seedling" style="color: black;  "></i>
@@ -44,7 +45,7 @@
 
                         </a>
                     </td>
-                    <td>{{$order->created_at}}</td>
+
 
 
                 </tr>

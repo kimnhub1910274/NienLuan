@@ -96,7 +96,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Danh mục sản phẩm</span>
+                    <span>Danh mục </span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="py-2 rounded collapse-inner bg-light">
@@ -137,18 +137,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fa fa-fw fa-folder"></i>
-                    <span>Danh sách khách hàng</span>
+                    <span>Khách hàng</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="py-2 bg-white rounded collapse-inner">
-                        <h6 class="collapse-header">Khách hàng</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="{{URL::to('/manage-customer')}}">Danh sách</a>
                     </div>
                 </div>
             </li>
@@ -163,7 +156,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiess"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Danh sách đơn hàng</span>
+                    <span>Đơn hàng </span>
                 </a>
                 <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -216,30 +209,6 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="ml-auto navbar-nav">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="p-3 shadow dropdown-menu dropdown-menu-right animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="mr-auto form-inline w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="border-0 form-control bg-light small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
                         <!-- Nav Item - Alerts -->
                         <li class="mx-1 nav-item dropdown no-arrow">
                              <a class="nav-link dropdown-toggle" href="" id="alertsDropdown" role="button"
@@ -297,12 +266,10 @@
 
     </div>
     <!-- End of Page Wrapper -->
-
-    {{-- <!-- Scroll to Top Button-->
     <a class="rounded scroll-to-top" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
+    {{-- <!-- Scroll to Top Button-->
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

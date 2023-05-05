@@ -94,6 +94,7 @@ class CheckoutController extends Controller
         $order_data['ship_id'] = Session::get('ship_id');
         $order_data['order_total'] = Cart::getTotal();
         $order_data['order_status'] = 'Đang chờ xử lý';
+        $order_data['created_at'] = $request->created_at;
         $order_id = DB::table('tbl_orders')->insertGetId($order_data);
 
         //insert order_detail
@@ -133,8 +134,16 @@ class CheckoutController extends Controller
         return view('admin_dashboard')->with('admin.manage_order', $manager_order);
 
     }
+    public function manage_customer()
+    {
+        $list_customer = DB::table('tbl_customers')->get();
+        $manager_customer = view('admin.manage_customer')->with('list_customer', $list_customer);
+
+        return view('admin_dashboard')->with('admin.manage_customer', $manager_customer);
+
+    }
     public function view_order($orderId){
-        $order_byId = DB::table('tbl_orders')
+        $order_byId = DB::table('tbl_orders')->where('tbl_orders.order_id', $orderId)
         ->join('tbl_customers', 'tbl_orders.customer_id', '=', 'tbl_customers.customer_id')
         ->join('tbl_ship', 'tbl_orders.ship_id', '=', 'tbl_ship.ship_id')
         ->join('tbl_order_details', 'tbl_orders.order_id', '=', 'tbl_order_details.order_id')
@@ -144,6 +153,7 @@ class CheckoutController extends Controller
         $manager_orderId = view('admin.view_order')->with('order_byId', $order_byId);
 
         return view('admin_dashboard')->with('admin.view_order', $manager_orderId);
+
 
     }
 
