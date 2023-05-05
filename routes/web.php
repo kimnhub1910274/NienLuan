@@ -99,11 +99,12 @@ Route::get('/delete-to-checkout/{id}', [CheckoutController::class, 'delete_to_ch
 Route::post('/save-checkout', [CheckoutController::class, 'save_checkout']);
 Route::get('/payment', [CheckoutController::class, 'payment']);
 Route::post('/order', [CheckoutController::class, 'order']);
+Route::get('/manage-customer', [CheckoutController::class, 'manage_customer']);
 
 
 //orders
 Route::get('/manage-order', [OrderController::class, 'manage_order']);
-Route::get('/manage-customer', [OrderController::class, 'manage_customer']);
+Route::get('/view-order/{order_id}', [OrderController::class, 'view_order']);
 
 Route::get('/ordered/{customerId}', [OrderController::class, 'ordered']);
 
