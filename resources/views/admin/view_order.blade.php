@@ -1,5 +1,6 @@
 @extends('admin_dashboard')
 @section('admin_content')
+
 <div class="container-fluid">
 
     <div class="container">
@@ -16,16 +17,107 @@
                     <div class="card-body">
                         <div class="mb-3 d-flex justify-content-between">
                             <div>
-                                @foreach ($order_details as $key => $details)
-                                <span class="me-3">#{{ $details->order_id}}</span>
-                                <span class="me-3">{{ $details->order_status}}</span>
-                                <span class="badge rounded-pill bg-info"></span>
-                                @endforeach
-                            </div>
+                                <span class="me-3"></span>
+                                <span class="me-3">
+                                    @foreach ($order as $key => $valu)
+                                        @if ($valu->order_status == 0)
+                                            <form action="" method="post">
+                                                @csrf
+                                                <select name="order_status" id="" class="form-control order_details">
+                                                    <option selected value="0" id="{{$valu->order_id}}">
+                                                        Đã đặt hàng</option>
+                                                    <option value="1" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được xử lý</option>
+                                                    <option value="2" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được giao</option>
+                                                    <option value="3" id="{{$valu->order_id}}">
+                                                        Giao hàng thành công</option>
+                                                    <option value="4" id="{{$valu->order_id}}">
+                                                        Giao hàng không thành công</option>
+                                                </select>
+                                            </form>
+                                            @elseif($valu->order_status == 1)
+                                            <form action="" method="post">
+                                                @csrf
+                                                <select name="order_status" id="" class="form-control order_details">
+                                                    <option  value="0" id="{{$valu->order_id}}">
+                                                        Đã đặt hàng</option>
+                                                    <option selected value="1" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được xử lý</option>
+                                                    <option value="2" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được giao</option>
+                                                    <option value="3" id="{{$valu->order_id}}">
+                                                        Giao hàng thành công</option>
+                                                    <option value="4" id="{{$valu->order_id}}">
+                                                        Giao hàng không thành công</option>
+                                                </select>
+                                            </form>
+                                            @elseif($valu->order_status == 2)
+                                            <form action="" method="post">
+                                                @csrf
+                                                <select name="order_status" id="" class="form-control order_details">
+                                                    <option  value="0" id="{{$valu->order_id}}">
+                                                        Đã đặt hàng</option>
+                                                    <option  value="1" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được xử lý</option>
+                                                    <option selected value="2" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được giao</option>
+                                                    <option value="3" id="{{$valu->order_id}}">
+                                                        Giao hàng thành công</option>
+                                                    <option value="4" id="{{$valu->order_id}}">
+                                                        Giao hàng không thành công</option>
+                                                </select>
+                                            </form>
+                                            @elseif($valu->order_status == 3)
+                                            <form action="" method="post">
+                                                @csrf
+                                                <select name="order_status" id="" class="form-control order_details">
+                                                    <option  value="0" id="{{$valu->order_id}}">
+                                                        Đã đặt hàng</option>
+                                                    <option  value="1" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được xử lý</option>
+                                                    <option  value="2" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được giao</option>
+                                                    <option selected value="3" id="{{$valu->order_id}}">
+                                                        Giao hàng thành công</option>
+                                                    <option value="4" id="{{$valu->order_id}}">
+                                                        Giao hàng không thành công</option>
+                                                </select>
+                                            </form>
+                                            @elseif($valu->order_status == 4)
+                                            <form action="" method="post">
+                                                @csrf
+                                                <select name="order_status" id="" class="form-control order_details">
+                                                    <option  value="0" id="{{$valu->order_id}}">
+                                                        Đã đặt hàng</option>
+                                                    <option  value="1" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được xử lý</option>
+                                                    <option  value="2" id="{{$valu->order_id}}">
+                                                        Đơn hàng đang được giao</option>
+                                                    <option  value="3" id="{{$valu->order_id}}">
+                                                        Giao hàng thành công</option>
+                                                    <option selected value="4" id="{{$valu->order_id}}">
+                                                        Giao hàng không thành công</option>
+                                                </select>
+                                            </form>
+                                        @endif
 
+                                    @endforeach
+
+                                </span>
+                            </div>
                         </div>
                         <table class="table table-borderless">
-                            <th></th>
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng trong kho</th>
+                                    <th>Số lượng </th>
+                                    <th>Giá</th>
+                                    <th>Thành tiền</th>
+
+                                </tr>
+                            </thead>
                             <tbody>
                             @php
                                 $total = 0;
@@ -47,31 +139,34 @@
                                                 </a>{{ $details->product_name}}</h5>
                                             </div>
                                         </div>
-                                        </td>
-                                        <td><input type="number" min="1" name="product_quantityy" style="width:40px"
+                                    </td>
+                                    <td class="text">
+                                        {{$details->product->product_quantity}}
+                                    </td>
+                                    <td>
+                                        <input type="number" min="1" name="product_quantityy" style="width:40px"
                                             value="{{ $details->product_quantity}}">
                                             <button class="btn btn-success" name="update_quantity"
                                             >Cập nhật</button>
-                                        </td>
-                                        <td class="text">
-                                            {{number_format($details->product_price)}}
-                                        </td>
-                                        <td class="text-end">
-                                            {{number_format($subtotal)}}
-                                        </td>
-                                    </tr>
+                                        <input type="hidden" name="order_check_quantity"
+                                         value="{{$details->product_id}}" class="order_product_id">
+                                    </td>
+                                    <td class="text">
+                                        {{number_format($details->product_price)}}
+                                    </td>
+                                    <td class="text-end">
+                                        {{number_format($subtotal)}}
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th scope="" >Phí vận chuyển</th>
-                                    <td></td>
-                                    <td></td>
+                                    <th scope="" colspan="4">Phí vận chuyển</th>
                                     <td class="text-end">0</td>
                                 </tr>
                                 <tr class="fw-bold">
-                                    <td colspan="2">Tổng tiền</td>
-                                    <td></td>
+                                    <td colspan="4">Tổng tiền</td>
                                     <td class="text-end">
                                         {{ number_format($total)}}</td>
                                 </tr>

@@ -21,19 +21,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
       crossorigin="anonymous"></script>
-    <link href="{{{'public/fonts/fontawesome-free/css/all.min.css'}}}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,
     400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="{{{'public/Backend/css/sb-admin-2.min.css'}}}" rel="stylesheet">
+    <link href="{{asset('public/Backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/Backend/css/alert.css')}}" rel="stylesheet">
+
 
      <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
     crossorigin="anonymous">
-    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="{{{'public/fonts/fontawesome-free-6.0.0/css/all.min.css'}}}">
+    <link rel="stylesheet" href="{{asset('public/fonts/fontawesome-free-6.0.0/css/all.min.css')}}">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -45,7 +44,6 @@
      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"></script>
     <!-- owl carousel -->
-    <script src="owlcarousel/owl.carousel.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"></script>
@@ -300,12 +298,47 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+         <script type="text/javascript">
+        $('.order_details').change(function(){
+            var order_status = $(this).val();
+            var order_id = $(this).children(":selected").attr("id");
+            var _token = $('input[name="_token"]').val();
+
+            //lay so luong
+            quantity = [];
+            $("input[name='product_quantityy']").each(function(){
+                quantity.push($(this).val());
+            });
+
+            //lay product_id
+            order_product_id = [];
+            $("input[name='order_check_quantity']").each(function(){
+                order_product_id.push($(this).val());
+            });
+
+            //alert(order_product_id);
+            $.ajax({
+                type:'POST',
+                url:'{{ url('/update-quantity-order') }}',
+                data:{_token:_token, order_status:order_status, order_id:order_id, quantity:quantity, order_product_id:order_product_id },
+                success:function(data) {
+                    alert('Cập nhật số lượng kho thành công');
+                }
+            });
+
+        });
+
+    </script>
+     <script type="text/javascript">
+        $(document).ready(function(){
+
+        });
+    </script>
 
 </body>
 

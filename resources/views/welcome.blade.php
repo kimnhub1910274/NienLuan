@@ -10,11 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
      rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous">
-    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 
-    <link rel="stylesheet" href="{{{'public/fonts/fontawesome-free-6.0.0/css/all.min.css'}}}">
-    <link rel="stylesheet" href="{{{'public/Frontend/css/main.css'}}}">
+    <link rel="stylesheet" href="{{asset('public/fonts/fontawesome-free-6.0.0/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/Frontend/css/main.css')}}">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -36,7 +34,7 @@
         <div class="container-fluid d-flex justify-content-between" style=" margin: 10px 30px 20px 3px;">
             <!-- logo -->
             <a href="{{URL ::to('/dashboard')}}">
-                <img class="she" src="{{{'public/images/She.png'}}}" alt="">
+                <img class="she" src="{{asset('public/images/She.png')}}" alt="">
             </a>
             <style>
                 .she{
@@ -120,7 +118,7 @@
                                             style="text-decoration:none;color:black;">TRANG CHỦ</a>
                                         </li>
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{{'pages/introduce.php'}}}"
+                                            <a href="{{{ 'pages/introduce.php' }}}"
                                             style="text-decoration:none;color:black;">GIỚI
                                                 THIỆU</a>
                                         </li>
@@ -208,10 +206,10 @@
                 </div>
                     <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="public/images/bannerhome.png" class="d-block w-100" alt="...">
+                        <img src="{{ asset('public/images/bannerhome.png') }}" class="d-block w-100" alt="...">
                 </div>
                     <div class="carousel-item">
-                        <img src="public/images/bannerhome2.png" class="d-block w-100" alt="...">
+                        <img src="{{ asset('public/images/bannerhome2.png') }}" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button"

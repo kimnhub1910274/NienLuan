@@ -24,19 +24,25 @@ class OrderController extends Controller
     }
     public function view_order($order_id)
     {
-        $order = OrderDetails::where('order_id', $order_id)->get();
-        $all_order = Order::where('order_id', $order_id)->get();
+        $order_details = OrderDetails::with('product')->where('order_id', $order_id)->get();
+        $order = Order::where('order_id', $order_id)->get();
 
-        foreach($all_order as $key => $value){
+        foreach($order as $key => $value){
             $customer_id = $value->customer_id;
             $ship_id = $value->ship_id;
         }
         $customer = Customer::where('customer_id', $customer_id)->first();
         $ship = Ship::where('ship_id', $ship_id)->first();
-        $order_details = OrderDetails::with('product')->with('order')->where('order_id', $order_id)->get();
-        $order_detail = OrderDetails::with('order')->where('order_id', $order_id)->get();
+        $order_details_product = OrderDetails::with('product')->where('order_id', $order_id)->get();
 
-        return view('admin.view_order')->with(compact('order_details', 'customer', 'ship'));
+        return view('admin.view_order')->with(compact('order_details', 'customer', 'ship', 'order'));
+    }
+    public function update_quantity_order(Request $request)
+    {
+        $data = $request->all();
+        $order = Order::find($data['order_id']);
+        $order->order_status = $data['order_status'];
+        $order->save();
     }
 
 }

@@ -33,10 +33,16 @@
                     <td>{{$order->customer_id}}</td>
                     <td>{{number_format($order->order_total)}}</td>
                     <td>
-                        @if ($order->order_status == 1)
-                            Đang xử lý
-                        @else
-                            Đã xử lý
+                        @if ($order->order_status == 0)
+                            Đã đặt hàng
+                        @elseif($order->order_status == 1)
+                            Đơn hàng đang xử lý
+                        @elseif($order->order_status == 2)
+                            Đơn hàng đang được giao
+                        @elseif($order->order_status == 3)
+                            Giao hàng thành công
+                        @elseif($order->order_status == 4)
+                            Giao hàng không thành công
                         @endif
                         </td>
                     <td>{{$order->created_at}}</td>
