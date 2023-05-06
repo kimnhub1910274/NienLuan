@@ -303,7 +303,10 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-         <script type="text/javascript">
+    <script type="text/javascript">
+
+    </script>
+    <script type="text/javascript">
         $('.order_details').change(function(){
             var order_status = $(this).val();
             var order_id = $(this).children(":selected").attr("id");
@@ -325,9 +328,11 @@
             $.ajax({
                 type:'POST',
                 url:'{{ url('/update-quantity-order') }}',
-                data:{_token:_token, order_status:order_status, order_id:order_id, quantity:quantity, order_product_id:order_product_id },
+                data:{_token:_token, order_status:order_status, order_id:order_id,
+                     quantity:quantity, order_product_id:order_product_id },
                 success:function(data) {
                     alert('Cập nhật số lượng kho thành công');
+                    location.reload();
                 }
             });
 

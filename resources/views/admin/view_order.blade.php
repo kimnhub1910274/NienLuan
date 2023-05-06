@@ -146,8 +146,9 @@
                                     <td>
                                         <input type="number" min="1" name="product_quantityy" style="width:40px"
                                             value="{{ $details->product_quantity}}">
-                                            <button class="btn btn-success" name="update_quantity"
-                                            >Cập nhật</button>
+                                            <button class="btn btn-success update_quantity_order "
+                                             name="update_quantity_order">Cập nhật</button>
+
                                         <input type="hidden" name="order_check_quantity"
                                          value="{{$details->product_id}}" class="order_product_id">
                                     </td>
