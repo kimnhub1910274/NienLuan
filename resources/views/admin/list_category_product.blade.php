@@ -16,6 +16,7 @@
           <tr>
             <th scope="col">STT</th>
             <th scope="col">Tên danh mục</th>
+            <th>Mô tả</th>
             <th scope="col">Hiển thị</th>
             {{-- <th scope="col">Ngày thêm</th> --}}
             <th scope="col">Sửa</th>
@@ -27,6 +28,7 @@
                 <tr>
                     <th scope="" ><?php echo $key+1;?></th>
                     <td>{{$cate_pro->cate_name}}</td>
+                    <td>{{$cate_pro->cate_decr}}</td>
                     <td>
                         <?php
                             if($cate_pro->cate_status == 0){

@@ -157,7 +157,7 @@
                                             value="{{$details->order_id}}" class="order_id">
 
                                         <input type="hidden" name="order_qty_storage"
-                                            value="{{$details->product->product_quantity}}"
+                                            value="{{$details->product_quantity}}"
                                             class="order_qty_storage_{{ $details->product_id }}">
                                         @if ($order_status != 3)
                                             <button class="btn btn-success update_quantity_order"

@@ -13,8 +13,6 @@
                 <img src="{{ URL::to('public/uploads/product/'.$product->product_image) }}"
                  width="200" height="200" style="margin-bottom: 5px" alt="">
                 <p>{{ $product->product_name }}</p>
-                <span><i class="fa-regular fa-heart"></i></span>
-                <br>
                 <span class="price"><b>Giá: {{ number_format($product->product_price).' '.'VND' }}</b></span>
                 <span><i class="fa-solid fa-cart-plus"></i></span>
             </a>
