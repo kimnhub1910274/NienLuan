@@ -44,7 +44,8 @@
                                 <td><a href="{{ URL::to('/product-detail/'.$value->id) }}" >
                                     <img src="{{ URL::to('public/uploads/product/'.$value->attributes->image) }}" width="100" height="100" style="margin-bottom: 5px" alt="">
                                      {{-- {{ $value->name }} --}}
-                                </a></td>
+                                    </a>
+                                </td>
                                 <td>{{ $value->name }}</td>
                                 <td>
                                     <span>

@@ -38,6 +38,7 @@ class ProductController extends Controller
         $data['category_id'] = $request->product_cate;
         $data['product_status'] = $request->product_status;
         $data['product_quantity'] = $request->product_quantity;
+        $data['product_sold'] = $request->product_sold;
 
         $get_img = $request->file('product_image');
 

@@ -27,7 +27,7 @@
                 <span>
                     <p><b>Mô tả:</b> {{$value->product_desc}}</p>
                     <p><b>Danh mục:</b> {{$value->cate_name}}</p>
-                    <p><b>Tình trạng:</b> Còn hàng</p>
+                    <p><b>Tình trạng:</b> Còn {{$value->product_quantity}} sản phẩm</p>
                     <form action="{{ URL::to('/save-cartt') }}" method="post">
                         {{csrf_field() }}
                         <p> <b>Giá:</b> {{number_format($value->product_price)}} VND</p>
@@ -35,6 +35,7 @@
                         <input type="number" value="1" name="quantity" style="width:50px ;" min="1" />
                         <input type="hidden" value="{{$value->product_id}}"
                         name="product_id_hidden" style="width:50px;" />
+
                         <br>
                         <br>
                         <button type="submit" class="btn btn-primary cart">

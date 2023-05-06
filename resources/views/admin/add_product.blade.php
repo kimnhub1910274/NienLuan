@@ -59,6 +59,11 @@
                                 <input class="form-control" style="resize:none;" type="number" min="1"
                                 name="product_quantity" rows="3"></input>
                             </div>
+                            <div class="col">
+                                <label  class="form-label"><b>Số lượng đã bán</b></label>
+                                <input class="form-control" style="resize:none;" type="number" min="0"
+                                name="product_sold" rows="3"></input>
+                            </div>
                         </div>
                         <br>
                         <button class="add btn btn-primary" type="submit" name="add-pro">Thêm sản phẩm</button>

@@ -24,9 +24,10 @@ class CartController extends Controller
         $data['quantity'] = $quantity + 1;
         $data['name'] = $product_info->product_name;
         $data['price'] = $product_info->product_price;
+        $data['product_quantity'] = $product_info->product_quantity;
         $data['attributes']['image'] = $product_info->product_image;
         Cart::add($data);
-        return Redirect::to('/show-cart');
+        return Redirect::to('/');
     }
     public function save_cartt(Request $request)
     {
@@ -40,9 +41,10 @@ class CartController extends Controller
         $data['quantity'] = $quantity;
         $data['name'] = $product_info->product_name;
         $data['price'] = $product_info->product_price;
+        $data['product_quantity'] = $product_info->product_quantity;
         $data['attributes']['image'] = $product_info->product_image;
         Cart::add($data);
-        return Redirect::to('/show-cart');
+        return Redirect::to('/');
     }
 
 

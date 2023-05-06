@@ -3,10 +3,10 @@
 
 <div class="container-fluid">
 
-    <div class="container">
+    <div class="container-fluid">
       <!-- Title -->
       <div class="d-flex justify-content-between align-items-center py-3">
-        <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> CHI TIẾT ĐƠN HÀNG </h2>
+        <h3 class="h mb-0"><a href="#" class="text-muted"></a> CHI TIẾT ĐƠN HÀNG </h3>
       </div>
 
       <!-- Main content -->
@@ -127,7 +127,7 @@
                                     $subtotal = $details->product_price * $details->product_quantity;
                                     $total = $subtotal + $total ;
                                 @endphp
-                                <tr>
+                                <tr class="error_quantity_{{ $details->product_id }}">
                                     <td>
                                         <div class="d-flex mb-2">
                                             <div class="flex-shrink-0">
@@ -145,21 +145,25 @@
                                     </td>
                                     <td>
 
-                                        <input type="number" min="1" class="order_qty_{{ $details->product_id }}"
+                                        <input {{ $order_status == 3 ? 'disabled' : '' }}
+                                            type="number" min="1"  class="order_qty_{{ $details->product_id }}"
                                             name="product_sale_quantity" style="width:40px"
                                             value="{{ $details->product_quantity}}">
-
-                                        <input type="hidden" name="order_id"
-                                            value="{{$details->order_id}}" class="order_id">
 
                                         <input type="hidden" name="order_check_quantity"
                                             value="{{$details->product_id}}" class="order_product_id">
 
-                                        <button class="btn btn-success update_quantity_order"
+                                        <input type="hidden" name="order_id"
+                                            value="{{$details->order_id}}" class="order_id">
+
+                                        <input type="hidden" name="order_qty_storage"
+                                            value="{{$details->product->product_quantity}}"
+                                            class="order_qty_storage_{{ $details->product_id }}">
+                                        @if ($order_status != 3)
+                                            <button class="btn btn-success update_quantity_order"
                                             name="update_quantity_order"
                                             data-product_id="{{ $details->product_id }}">Cập nhật</button>
-
-
+                                        @endif
                                     </td>
                                     <td class="text">
                                         {{number_format($details->product_price)}}

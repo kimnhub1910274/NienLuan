@@ -31,12 +31,13 @@ class OrderController extends Controller
         foreach($order as $key => $value){
             $customer_id = $value->customer_id;
             $ship_id = $value->ship_id;
+            $order_status = $value->order_status;
         }
         $customer = Customer::where('customer_id', $customer_id)->first();
         $ship = Ship::where('ship_id', $ship_id)->first();
         $order_details_product = OrderDetails::with('product')->where('order_id', $order_id)->get();
 
-        return view('admin.view_order')->with(compact('order_details', 'customer', 'ship', 'order'));
+        return view('admin.view_order')->with(compact('order_details', 'customer', 'ship', 'order', 'order_status'));
     }
     public function update_quantity_order(Request $request)
     {
@@ -59,8 +60,23 @@ class OrderController extends Controller
 
                 }
             }
+        } elseif ($order->order_status != 2 && $order->order_status != 3 && $order->order_status == 4) {
+            foreach ($data['order_product_id'] as $key => $product_id) {
+                $product = Product::find($product_id);
+                $product_quantity = $product->product_quantity;
+                $product_sold = $product->product_sold;
+                foreach ($data['quantity'] as $key2 => $qty) {
+                    if ($key == $key2) {
+                        $product_remain = $product_quantity + $qty;
+                        $product->product_quantity = $product_remain;
+                        $product->product_sold = $product_sold - $qty;
+                        $product->save();
+                    }
 
+                }
+            }
         }
+
     }
     public function update_qty_order(Request $request)
     {

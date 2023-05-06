@@ -95,7 +95,7 @@ class CheckoutController extends Controller
         $order_data['customer_id'] = Session::get('customer_id');
         $order_data['ship_id'] = Session::get('ship_id');
         $order_data['order_total'] = Cart::getTotal();
-        $order_data['order_status'] = 1;
+        $order_data['order_status'] = 0;
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $order_data['created_at'] = now();
         $order_id = DB::table('tbl_orders')->insertGetId($order_data);

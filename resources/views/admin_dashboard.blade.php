@@ -344,17 +344,35 @@
                 order_product_id.push($(this).val());
             });
 
-            //alert(order_product_id);
-            $.ajax({
-                type:'POST',
-                url:'{{ url('/update-quantity-order') }}',
-                data:{_token:_token, order_status:order_status, order_id:order_id,
-                     quantity:quantity, order_product_id:order_product_id },
-                success:function(data) {
-                    alert('Cập nhật số lượng kho thành công');
-                    location.reload();
+            //dem chuoi
+            j = 0;
+            for(i=0; i<order_product_id.length; i++){
+                //sl trong don hang
+                var order_qty = $('.order_qty_'+order_product_id[i] ).val();
+                // sl trong kho
+                var order_qty_storage = $('.order_qty_storage_'+order_product_id[i] ).val();
+                if(parseInt(order_qty) > parseInt(order_qty_storage)){
+                    j = j + 1;
+                    if(j == 1){
+                        alert('Số lượng hàng trong kho không đủ');
+                    }
+                    $('.error_quantity_'+order_product_id[i]).css('background','rgb(238, 98, 82)');
                 }
-            });
+            }
+            if( j==0 ){
+                $.ajax({
+                    type:'POST',
+                    url:'{{ url('/update-quantity-order') }}',
+                    data:{_token:_token, order_status:order_status, order_id:order_id,
+                         quantity:quantity, order_product_id:order_product_id },
+                    success:function(data) {
+                        alert('Cập nhật số lượng kho thành công');
+                        location.reload();
+                    }
+                });
+            }
+            //alert(j);
+
 
         });
 
