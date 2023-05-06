@@ -304,7 +304,27 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
+        $('.update_quantity_order').click(function () {
+            var order_product_id = $(this).data('product_id');
+            var order_qty = $('.order_qty_'+order_product_id).val();
+            var order_id = $('.order_id').val();
+            var _token = $('input[name="_token"]').val();
 
+            //alert(order_product_id);
+            //alert(order_qty);
+            //alert(order_id);
+            $.ajax({
+                type:'POST',
+                url:'{{ url('/update-qty-order') }}',
+                data:{_token:_token, order_product_id:order_product_id, order_qty:order_qty, order_id:order_id
+                       },
+                success:function(data) {
+                    alert('Cập nhật số lượng đơn hàng thành công');
+                    location.reload();
+                }
+            });
+
+        })
     </script>
     <script type="text/javascript">
         $('.order_details').change(function(){
@@ -314,7 +334,7 @@
 
             //lay so luong
             quantity = [];
-            $("input[name='product_quantityy']").each(function(){
+            $("input[name='product_sale_quantity']").each(function(){
                 quantity.push($(this).val());
             });
 

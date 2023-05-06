@@ -62,5 +62,14 @@ class OrderController extends Controller
 
         }
     }
+    public function update_qty_order(Request $request)
+    {
+        $data = $request->all();
+        $order_details = OrderDetails::where('product_id', $data['order_product_id'])
+        ->where('order_id', $data['order_id'])->first();
+
+        $order_details->product_quantity = $data['order_qty'];
+        $order_details->save();
+    }
 
 }

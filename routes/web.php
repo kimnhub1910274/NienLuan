@@ -106,6 +106,7 @@ Route::get('/manage-customer', [CheckoutController::class, 'manage_customer']);
 Route::get('/manage-order', [OrderController::class, 'manage_order']);
 Route::get('/view-order/{order_id}', [OrderController::class, 'view_order']);
 Route::post('/update-quantity-order', [OrderController::class, 'update_quantity_order']);
+Route::post('/update-qty-order', [OrderController::class, 'update_qty_order']);
 
 
 Route::get('/ordered/{customerId}', [OrderController::class, 'ordered']);

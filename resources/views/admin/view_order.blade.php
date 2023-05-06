@@ -144,13 +144,22 @@
                                         {{$details->product->product_quantity}}
                                     </td>
                                     <td>
-                                        <input type="number" min="1" name="product_quantityy" style="width:40px"
+
+                                        <input type="number" min="1" class="order_qty_{{ $details->product_id }}"
+                                            name="product_sale_quantity" style="width:40px"
                                             value="{{ $details->product_quantity}}">
-                                            <button class="btn btn-success update_quantity_order "
-                                             name="update_quantity_order">Cập nhật</button>
+
+                                        <input type="hidden" name="order_id"
+                                            value="{{$details->order_id}}" class="order_id">
 
                                         <input type="hidden" name="order_check_quantity"
-                                         value="{{$details->product_id}}" class="order_product_id">
+                                            value="{{$details->product_id}}" class="order_product_id">
+
+                                        <button class="btn btn-success update_quantity_order"
+                                            name="update_quantity_order"
+                                            data-product_id="{{ $details->product_id }}">Cập nhật</button>
+
+
                                     </td>
                                     <td class="text">
                                         {{number_format($details->product_price)}}
