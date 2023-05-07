@@ -1,14 +1,14 @@
 @extends('test')
 @section('test')
 <title>Giỏ hàng</title>
-<div class="container" style="margin-bottom: 30px;margin-top: 120px;">
+<div class="container" style="margin-bottom: 30px; margin-top: 120px;">
     <?php
         $ship_id = Session::get('ship_id');
         $customer_id = Session::get('customer_id');
         if($customer_id ) {
         ?>
-            <a href="{{ URL::to('/ordered/'.$customer_id) }}">
-                <button class="btn btn-danger">Xem lịch sử đơn hàng</button>
+            <a  href="{{ URL::to('/ordered/'.$customer_id) }}">
+                <button class="btn btn-info" style="margin-bottom: 30px;">Xem lịch sử đơn hàng</button>
 
             </a>
         <?php }

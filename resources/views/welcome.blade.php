@@ -46,22 +46,22 @@
                 <li class="nav-item align-self-center ">
                     <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
                         style="font-weight: 400;color:black;" href="{{URL ::to('/home')}}" aria-current="page">
-                        TRANG CHỦ</a>
+                        <b>TRANG CHỦ</b></a>
                 </li>
                 <li class="nav-item align-self-center">
                     <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
                         style="font-weight: 400;color:black;" href="{{URL ::to('/introduce')}}">
-                        GIỚI THIỆU</a>
+                        <b>GIỚI THIỆU</b></a>
                 </li>
                 <li class="nav-item align-self-center">
                     <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
                         style="font-weight: 400;color:black;" href="{{URL ::to('/product')}}">
-                        SẢN PHẨM</a>
+                        <b>SẢN PHẨM</b></a>
                 </li>
                 <li class="nav-item align-self-center">
                     <a class="menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
                         style="font-weight: 400;color:black;" href="{{URL ::to('/news')}}">
-                        TIN TỨC </a>
+                        <b>TIN TỨC</b> </a>
                 </li>
             </ul>
             <!-- offcanvas menu-->
@@ -96,7 +96,7 @@
                                 <?php
                                     }
                                 ?>
-                                <div style="color: black; margin: 20px 10px 20px ">
+                                <div style="color: black; margin: 10px 10px 20px ">
                                     <?php
                                     $name = Session::get('customer_name');
                                     if ($name) {
@@ -115,21 +115,19 @@
                                     <ul class="navbar-nav">
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
                                             <a href="{{URL ::to('/home')}}"
-                                            style="text-decoration:none;color:black;">TRANG CHỦ</a>
+                                            style="text-decoration:none;color:black;"><b>TRANG CHỦ</b></a>
                                         </li>
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
                                             <a href="{{{ 'pages/introduce.php' }}}"
-                                            style="text-decoration:none;color:black;">GIỚI
-                                                THIỆU</a>
+                                            style="text-decoration:none;color:black;"><b>GIỚI THIỆU</b></a>
                                         </li>
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
                                             <a href="{{{'pages/product.php'}}}"
-                                             style="text-decoration:none;color:black;">SẢN
-                                                PHẨM</a>
+                                             style="text-decoration:none;color:black;"><b>SẢN PHẨM</b></a>
                                         </li>
                                         <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
                                             <a href="{{URL ::to('/news')}}"
-                                             style="text-decoration:none;color:black;">TIN TỨC</a>
+                                             style="text-decoration:none;color:black;"><b>TIN TỨC</b></a>
                                     </ul>
                                 </div>
                             </div>

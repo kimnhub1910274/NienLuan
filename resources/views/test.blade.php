@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 
-    <link rel="stylesheet" href="{{{'public/fonts/fontawesome-free-6.0.0/css/all.min.css'}}}">
-    <link rel="stylesheet" href="{{{'public/Frontend/css/main.css'}}}">
+    <link rel="stylesheet" href="{{asset('public/fonts/fontawesome-free-6.0.0/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/Frontend/css/main.css')}}">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script>
@@ -30,171 +30,169 @@
 </head>
 
 <body>
-    <header class="fixed header" style="margin-bottom: 50px;">
-        <div class="container-fluid d-flex justify-content-between" style=" margin: 10px 30px 20px 3px;">
-            <!-- logo -->
-            <a href="{{URL ::to('/home')}}">
-                <img class="she" src="{{{'public/images/She.png'}}}" alt="">
-            </a>
-            <style>
-                .she{
-                    width: 250px;
-                    border-radius: 20px;
-                }
-            </style>
-            <ul class="p-1 nav d-sm-none d-md-none d-lg-flex d-xl-flex">
-                <li class="nav-item align-self-center ">
-                    <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
-                        style="font-weight: 400;color:black;" href="{{URL ::to('/home')}}" aria-current="page">
-                        TRANG CHỦ</a>
-                </li>
-                <li class="nav-item align-self-center">
-                    <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
-                        style="font-weight: 400;color:black;" href="{{URL ::to('/introduce')}}">
-                        GIỚI THIỆU</a>
-                </li>
-                <li class="nav-item align-self-center">
-                    <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
-                        style="font-weight: 400;color:black;" href="{{URL ::to('/product')}}">
-                        SẢN PHẨM</a>
-                </li>
-                <li class="nav-item align-self-center">
-                    <a class="menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
-                        style="font-weight: 400;color:black;" href="{{URL ::to('/news')}}">
-                        TIN TỨC </a>
-                </li>
-            </ul>
-            <!-- offcanvas menu-->
-            <div class="d-flex">
-                <div class="align-self-center me-3">
-                    <nav class="navbar navbar-expand-xl navbar-expand-lg navbar-light">
-                        <!-- nút menu -->
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                            <span class="navbar-toggler-icon"></span></button>
-                        <!-- offcanvas -->
-                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-                            aria-labelledby="offcanvasExampleLabel">
-                            <div class="offcanvas-header">
-                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="login">
-                                <?php
-                                    $customer_id = Session::get('customer_id');
-                                    if ($customer_id != null) {
-                                ?>
-                                    <div class="login" style="color:black;margin-top: 20px;">
-                                        <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất,</b></a>
-                                    </div>
-                                <?php
-                                    } else {
-                                ?>
-                                    <div class="login" style="color:black;margin-top: 20px;">
-                                        <a href="{{URL ::to('/login')}}"><b>Đăng nhập</b></a>
-                                    </div>
-                                <?php
-                                    }
-                                ?>
-                                <div style="color: black; margin: 20px 10px 20px ">
-                                    <?php
-                                    $name = Session::get('customer_name');
-                                    if ($name) {
-                                        echo $name;
-                                    }
-
-                                    ?>
-                                </div>
-                            </div>
-                            <div class="mx-2 d-flex justify-content-end">
-
-                            </div>
-                            <hr>
-                            <div class="p-0 mx-3 offcanvas-body">
-                                <div class="mt-3 dropdown">
-                                    <ul class="navbar-nav">
-                                        <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{URL ::to('/home')}}"
-                                            style="text-decoration:none;color:black;">TRANG CHỦ</a>
-                                        </li>
-                                        <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{{'pages/introduce.php'}}}"
-                                            style="text-decoration:none;color:black;">GIỚI
-                                                THIỆU</a>
-                                        </li>
-                                        <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{{'pages/product.php'}}}"
-                                            style="text-decoration:none;color:black;">SẢN
-                                                PHẨM</a>
-                                        </li>
-                                        <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
-                                            <a href="{{URL ::to('/news')}}"
-                                            style="text-decoration:none;color:black;">TIN TỨC</a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <!--search-->
-                <form action="{{URL::to('/search')}}" method="POST" style="margin-top: 20px ;">
-                    {{csrf_field()}}
-                    <div class="dropdown align-self-center d-sm-none d-md-none d-none d-lg-flex d-xl-flex">
-                        <div class="dropdown-content">
-                            <div>
-                                <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
-                            </div>
-                        </div>
-                        <div>
-                            <button type="submit"  name="search" style="border:white ;">
-                                <i class="search fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </div>
-                        {{-- <div class="dropdown-content">
-                            <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
-                            <button type="submit"  name="search" style="border:white ;">
-                                <i class="search fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </div> --}}
-                    </div>
-                </form>
-            </div>
-            <?php
-                $customer_id = Session::get('customer_id');
-                if ($customer_id != null) {
-            ?>
-                <div class="login" style="color:black;margin-top: 20px;">
-                    <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất, </b></a>
-                </div>
-            <?php
-                } else {
-            ?>
-                <div class="login" style="color:black;margin-top: 20px;">
-                    <a href="{{URL ::to('/login')}}"><b>Đăng nhập</b></a>
-                </div>
-            <?php
-                }
-            ?>
-            <div style="color: black; margin: 20px 10px 20px ">
-                <?php
-                $name = Session::get('customer_name');
-                if ($name)
-                {
-                    echo $name;
-                }
-                ?>
-            </div>
-
-            <div class="cart">
-                <a href="{{URL ::to('/show-cart')}}" style="text-decoration: none; color:black;"><i
-                        class="fa-solid fa-cart-shopping"></i>
-                    <span id="circle">{{ number_format(Cart::getContent()->count()) }}</span>
+        <header class="fixed header" style="margin-bottom: 100px;">
+            <div class="container-fluid d-flex justify-content-between" style=" margin: 10px 30px 20px 3px;">
+                <!-- logo -->
+                <a href="{{URL ::to('/dashboard')}}">
+                    <img class="she" src="{{asset('public/images/She.png')}}" alt="">
                 </a>
+                <style>
+                    .she{
+                        width: 250px;
+                        border-radius: 20px;
+                    }
+                </style>
+                <ul class="p-1 nav d-sm-none d-md-none d-lg-flex d-xl-flex">
+                    <li class="nav-item align-self-center ">
+                        <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
+                            style="font-weight: 400;color:black;" href="{{URL ::to('/home')}}" aria-current="page">
+                            <b>TRANG CHỦ</b></a>
+                    </li>
+                    <li class="nav-item align-self-center">
+                        <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
+                            style="font-weight: 400;color:black;" href="{{URL ::to('/introduce')}}">
+                            <b>GIỚI THIỆU</b></a>
+                    </li>
+                    <li class="nav-item align-self-center">
+                        <a class=" menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
+                            style="font-weight: 400;color:black;" href="{{URL ::to('/product')}}">
+                            <b>SẢN PHẨM</b></a>
+                    </li>
+                    <li class="nav-item align-self-center">
+                        <a class="menu nav-link align-self-center d-none d-sm-none d-md-none d-lg-flex d-xl-flex"
+                            style="font-weight: 400;color:black;" href="{{URL ::to('/news')}}">
+                            <b>TIN TỨC</b> </a>
+                    </li>
+                </ul>
+                <!-- offcanvas menu-->
+                <div class="d-flex">
+                    <div class="align-self-center me-3">
+                        <nav class="navbar navbar-expand-xl navbar-expand-lg navbar-light" aria-labelledby="">
+                            <!-- nút menu -->
+                            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                                <span class="navbar-toggler-icon"></span></button>
+                            <!-- offcanvas -->
+                            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                                aria-labelledby="offcanvasExampleLabel">
+                                <div class="offcanvas-header">
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="login">
+                                    <?php
+                                        $customer_id = Session::get('customer_id');
+                                        if ($customer_id != null) {
+                                    ?>
+                                        <div class="login" style="color:black;margin-top: 20px;">
+                                            <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất,</b></a>
+                                        </div>
+                                    <?php
+                                        } else {
+                                    ?>
+                                        <div class="login" style="color:black;margin-top: 20px;">
+                                            <a href="{{URL ::to('/login')}}"><b>Đăng nhập</b></a>
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
+                                    <div style="color: black; margin: 10px 10px 20px ">
+                                        <?php
+                                        $name = Session::get('customer_name');
+                                        if ($name) {
+                                            echo $name;
+                                        }
+
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="mx-2 d-flex justify-content-end">
+
+                                </div>
+                                <hr>
+                                <div class="p-0 mx-3 offcanvas-body">
+                                    <div class="mt-3 dropdown">
+                                        <ul class="navbar-nav">
+                                            <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
+                                                <a href="{{URL ::to('/home')}}"
+                                                style="text-decoration:none;color:black;"><b>TRANG CHỦ</b></a>
+                                            </li>
+                                            <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
+                                                <a href="{{{ 'pages/introduce.php' }}}"
+                                                style="text-decoration:none;color:black;"><b>GIỚI THIỆU</b></a>
+                                            </li>
+                                            <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
+                                                <a href="{{{'pages/product.php'}}}"
+                                                style="text-decoration:none;color:black;"><b>SẢN PHẨM</b></a>
+                                            </li>
+                                            <li class="pt-3 nav-item px-xl-5 px-lg-4 px-md-3">
+                                                <a href="{{URL ::to('/news')}}"
+                                                style="text-decoration:none;color:black;"><b>TIN TỨC</b></a>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <!--search-->
+                    <form action="{{URL::to('/search')}}" method="POST" style="margin-top: 20px ;">
+                        {{csrf_field()}}
+                        <div class="dropdown align-self-center d-sm-none d-md-none d-none d-lg-flex d-xl-flex">
+                            <div class="dropdown-content">
+                                <div>
+                                    <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit"  name="search" style="border:white ;">
+                                    <i class="search fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                            {{-- <div class="dropdown-content">
+                                <input class="input-search" name="key_word" type="text" placeholder="Tìm kiếm">
+                                <button type="submit"  name="search" style="border:white ;">
+                                    <i class="search fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div> --}}
+                        </div>
+                    </form>
+                </div>
+                <?php
+                    $customer_id = Session::get('customer_id');
+                    if ($customer_id != null) {
+                ?>
+                    <div class="login" style="color:black;margin-top: 20px;">
+                        <a href="{{URL ::to('/log-out')}}"><b>Đăng xuất, </b></a>
+                    </div>
+                <?php
+                    } else {
+                ?>
+                    <div class="login" style="color:black;margin-top: 20px;">
+                        <a href="{{URL ::to('/login')}}"><b>Đăng nhập</b></a>
+                    </div>
+                <?php
+                    }
+                ?>
+                <div style="color: black; margin: 20px 10px 20px ">
+                    <?php
+                    $name = Session::get('customer_name');
+                    if ($name)
+                    {
+                        echo $name;
+                    }
+                    ?>
+                </div>
+                <div class="cart">
+                    <a href="{{URL ::to('/show-cart')}}" style="text-decoration: none; color:black;"><i
+                            class="fa-solid fa-cart-shopping"></i>
+                        <span id="circle">{{ number_format(Cart::getContent()->count()) }}</span>
+                    </a>
+                </div>
             </div>
-        </div>
-        </div>
-    </header>
+            </div>
+        </header>
     <main>
+
         @yield('test')
     </main>
 </body>
@@ -250,22 +248,6 @@
 
 </footer>
 
-<!-- header-fixed -->
-{{-- <script>
-  $(document).ready(function(){
-    $(window).scroll(function(){
-        if($(this).scrollTop()){
-            $('.header').addClass('fixed');
-        }
-        else{
-            $('.header').removeClass('fixed');
-        }
-    })
-    $('.list').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
-    })
-  })
-</script> --}}
 <script>
 // Get the button
 let mybutton = document.getElementById("myBtn");

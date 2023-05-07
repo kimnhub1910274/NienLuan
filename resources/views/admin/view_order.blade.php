@@ -1,6 +1,6 @@
 @extends('admin_dashboard')
 @section('admin_content')
-
+<title>Chi tiết đơn hàng</title>
 <div class="container-fluid">
 
     <div class="container-fluid">

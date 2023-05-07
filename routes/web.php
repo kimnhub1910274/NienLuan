@@ -110,6 +110,7 @@ Route::post('/update-qty-order', [OrderController::class, 'update_qty_order']);
 
 
 Route::get('/ordered/{customerId}', [OrderController::class, 'ordered']);
+Route::get('/view-ordered/{order_id}', [OrderController::class, 'view_ordered']);
 
 
 
