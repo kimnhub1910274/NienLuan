@@ -54,6 +54,7 @@ Route::get('/dashboard', [AdminController::class, 'show_dashboard']);
 Route::post('/admin_dashboard', [AdminController::class, 'dashboard']);
 Route::get('/logout', [AdminController::class, 'logout']);
 Route::post('/admin_search', [AdminController::class, 'admin_search']);
+Route::post('/search_customer', [AdminController::class, 'search_customer']);
 
 
 

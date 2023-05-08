@@ -44,7 +44,6 @@
                             <thead>
                                 <tr>
                                     <th>Sản phẩm</th>
-                                    <th>Số lượng trong kho</th>
                                     <th>Số lượng </th>
                                     <th>Giá</th>
                                     <th>Thành tiền</th>
@@ -73,9 +72,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text">
-                                        {{$details->product->product_quantity}}
-                                    </td>
+
                                     <td>
                                         {{ $details->product_quantity}}
                                     </td>

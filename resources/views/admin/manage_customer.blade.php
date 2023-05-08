@@ -11,6 +11,19 @@
         Session::pull('message', null);
     }
     ?>
+    <form action="{{URL::to('/search_customer')}}" method="POST"
+        class="my-2 mr-auto d-none d-sm-inline-block form-inline ml-md-3 my-md-0 mw-100 navbar-search">
+        {{ csrf_field() }}
+        <div class="input-group">
+            <input type="text"  class="border-0 form-control bg-light small" placeholder="Tìm kiếm"
+                aria-label="Search" aria-describedby="basic-addon2" name="key_word">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
     <table class="table">
         <thead>
           <tr>

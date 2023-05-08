@@ -48,9 +48,19 @@ class AdminController extends Controller
     {
         $key = $request->key_word;
         $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
+        $customer = DB::table('tbl_customers')->orderby('customer_id', 'desc')->get();
         $search_product = DB::table('tbl_product')->where('product_name', 'like', '%'.$key.'%')->get();
+        $search_customer = DB::table('tbl_customers')->where('customer_name', 'like', '%'.$key.'%')->get();
         return view('admin.search')->with('category', $cate_product)
-        ->with('search_product', $search_product);
+        ->with('search_product', $search_product)->with('search_customer', $search_customer);
+
+    }
+    public function search_customer (Request $request)
+    {
+        $key = $request->key_word;
+        $customer = DB::table('tbl_customers')->orderby('customer_id', 'desc')->get();
+        $search_customer = DB::table('tbl_customers')->where('customer_name', 'like', '%'.$key.'%')->get();
+        return view('admin.search_customer')->with('search_customer', $search_customer);
 
     }
 
