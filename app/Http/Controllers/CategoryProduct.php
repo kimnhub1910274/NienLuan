@@ -31,7 +31,6 @@ class CategoryProduct extends Controller
         $data['cate_decr'] = $request->cate_pro_decr;
         $data['cate_status'] = $request->cate_pro_status;
 
-
         DB::table('tbl_cate_pro')->insert($data);
         Session::put('message', 'Thêm thành công');
 
@@ -58,7 +57,6 @@ class CategoryProduct extends Controller
         $manager_cate = view('admin.edit_category_product')->with('edit_category_product', $edit_category_product);
 
         return view('admin_dashboard')->with('admin.edit_category_product', $manager_cate);
-
     }
     public function update_category_product(Request $request, $category_id)
     {

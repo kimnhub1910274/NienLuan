@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function list_product()
     {
         $list_product = DB::table('tbl_product')
-        ->join('tbl_cate_pro', 'tbl_cate_pro.cate_id','=','tbl_product.category_id')
+        ->join('tbl_cate_pro', 'tbl_cate_pro.cate_id', '=', 'tbl_product.category_id')
         ->where('cate_status', 1)
         ->orderby('tbl_product.product_id')->get();
         $manager = view('admin.list_product')->with('list_product', $list_product);
@@ -57,8 +57,6 @@ class ProductController extends Controller
         Session::put('message', 'Thêm thành công');
         return Redirect::to('add-product');
 
-
-
         DB::table('tbl_product')->insert($data);
         Session::put('message', 'Thêm thành công');
         return Redirect::to('add-product');
@@ -67,7 +65,7 @@ class ProductController extends Controller
     public function on_pro($product_id)
     {
 
-        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>0]);
+        DB::table('tbl_product')->where('product_id', $product_id)->update(['product_status'=>0]);
         Session::put('message', 'Không hiện sản phẩm');
         return Redirect::to('list-product');
     }
@@ -82,12 +80,10 @@ class ProductController extends Controller
     {
         $cate_product = DB::table('tbl_cate_pro')->orderby('cate_id', 'desc')->get();
         $edit_product = DB::table('tbl_product')->where('product_id', $product_id)->get();
-        $manager_product = view('admin.edit_product')->with('edit_product', $edit_product)->with('cate_product',$cate_product);
+        $manager_product = view('admin.edit_product')->with('edit_product', $edit_product)
+        ->with('cate_product', $cate_product);
 
         return view('admin_dashboard')->with('admin.edit_product', $manager_product);
-
-        //return view('admin_dashboard')->with('admin.edit_product', $manager_product);
-
     }
     public function update_product(Request $request, $product_id){
         $data = array();
@@ -100,11 +96,11 @@ class ProductController extends Controller
         $data['product_quantity'] = $request->product_quantity;
 
         $get_img = $request->file('product_image');
-        if($get_img){
+        if ($get_img) {
             $get_name_img = $get_img->getClientOriginalName();
-            $name_img = current(explode('.',$get_name_img));
+            $name_img = current(explode('.', $get_name_img));
             $new_img = $name_img.rand(0,99).'.'.$get_img->getClientOriginalExtension();
-            $get_img->move('public/uploads/product',$new_img);
+            $get_img->move('public/uploads/product', $new_img);
             $data['product_image'] = $new_img;
             DB::table('tbl_product')->where('product_id', $product_id)->update($data);
             Session::put('message', 'Cập nhật sản phẩm không thành công');
@@ -116,7 +112,8 @@ class ProductController extends Controller
 
 
     }
-    public function delete_product( $product_id){
+    public function delete_product($product_id)
+    {
 
         DB::table('tbl_product')->where('product_id', $product_id)->delete();
         Session::put('message', 'Xóa sản phẩm thành công');
@@ -124,21 +121,22 @@ class ProductController extends Controller
 
     }
     //end admin
-    public function product_detail($product_id){
-        $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
+    public function product_detail($product_id)
+    {
+        $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id', 'desc')->get();
         $detail_product = DB::table('tbl_product')
-        ->join('tbl_cate_pro','tbl_cate_pro.cate_id','=','tbl_product.category_id')
-        ->where('tbl_product.product_id',$product_id)->get();
-        foreach ($detail_product as $key => $value){
+        ->join('tbl_cate_pro', 'tbl_cate_pro.cate_id', '=', 'tbl_product.category_id')
+        ->where('tbl_product.product_id', $product_id)->get();
+        foreach ($detail_product as $key => $value)
+        {
             $category_id = $value->category_id;
 
         }
-
         $related_product = DB::table('tbl_product')
-            ->join('tbl_cate_pro','tbl_cate_pro.cate_id','=','tbl_product.category_id')
-            ->where('tbl_cate_pro.cate_id',$category_id)->whereNotIn('tbl_product.product_id',[$product_id])->get();
+            ->join('tbl_cate_pro', 'tbl_cate_pro.cate_id', '=', 'tbl_product.category_id')
+            ->where('tbl_cate_pro.cate_id', $category_id)->whereNotIn('tbl_product.product_id', [$product_id])->get();
 
-        return view('pages.product.product_detail')->with('category',$cate_product)
-        ->with('product_details',$detail_product)->with('related',$related_product);
+        return view('pages.product.product_detail')->with('category', $cate_product)
+        ->with('product_details', $detail_product)->with('related', $related_product);
     }
 }

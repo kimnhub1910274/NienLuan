@@ -51,13 +51,6 @@
                             <i class="fa-regular fa-eye"style="color: black;"></i>
                         </a>
                         &nbsp;
-                        <a onclick="return confirm
-                        ('Bạn có chắc chắn muốn xóa đơn hàng của {{$order->customer_name}} ?')
-                        "href="{{URL::to('/delete-order/'.$order->order_id)}}">
-                            <i class="fa-solid fa-trash" style="color: black;"></i>
-
-
-                        </a>
                     </td>
 
 

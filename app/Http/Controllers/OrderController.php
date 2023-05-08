@@ -38,7 +38,8 @@ class OrderController extends Controller
         $ship = Ship::where('ship_id', $ship_id)->first();
         $order_details_product = OrderDetails::with('product')->where('order_id', $order_id)->get();
 
-        return view('pages.cart.view_ordered')->with(compact('order_details', 'customer', 'ship', 'order', 'order_status'));
+        return view('pages.cart.view_ordered')
+        ->with(compact('order_details', 'customer', 'ship', 'order', 'order_status'));
 
     }
     public function manage_order()

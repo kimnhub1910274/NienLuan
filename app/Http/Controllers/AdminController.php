@@ -29,7 +29,6 @@ class AdminController extends Controller
         ->where('admin_password', $admin_password)->first();
 
         if ($result) {
-
            Session::put('admin_name', $result->admin_name);
            Session::put('admin_id', $result->admin_id);
             return Redirect::to('/dashboard');

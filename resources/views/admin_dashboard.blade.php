@@ -240,9 +240,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     @yield('admin_content')
-
                 </div>
                 <!-- /.container-fluid -->
 

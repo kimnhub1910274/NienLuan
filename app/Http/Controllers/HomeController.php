@@ -39,8 +39,6 @@ class HomeController extends Controller
             session()->regenerate();
         Session::put('name', $result->name);
         Session::put('id', $result->id);
-
-
             return Redirect::to('/checkout');
 
     } else {
@@ -62,7 +60,4 @@ class HomeController extends Controller
         return view('pages.product.search')->with('category', $cate_product)->with('search_product', $search_product);
 
     }
-
-
-
 }

@@ -33,9 +33,6 @@
                     <td>{{$customer->customer_phone}}</td>
                     <td>{{$customer->customer_email}}</td>
                     <td>{{$customer->customer_address}}</td>
-
-
-
                 </tr>
             @endforeach
 

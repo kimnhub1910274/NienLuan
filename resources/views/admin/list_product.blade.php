@@ -6,7 +6,7 @@
     <h3>DANH SÁCH SẢN PHẨM</h3>
     <?php
     $message = Session::get('message');
-    if($message){
+    if ($message) {
         echo $message;
         Session::pull('message', null);
     }
@@ -20,8 +20,9 @@
             <th scope="col">Giá </th>
             <th scope="col">Mô tả </th>
             <th scope="col">Danh mục</th>
+            <th scope="col">Số lượng kho</th>
+            <th scope="col">Số lượng đã bán</th>
             <th scope="col">Hiển thị</th>
-            <th scope="col">Số lượng</th>
             <th scope="col">Sửa</th>
           </tr>
         </thead>
@@ -36,6 +37,8 @@
                     <td>{{$product->product_price}}</td>
                     <td>{{$product->product_desc}}</td>
                     <td>{{$product->cate_name}}</td>
+                    <td>{{$product->product_quantity}}</td>
+                    <td>{{$product->product_sold}}</td>
                     <td>
                         <?php
                             if ($product->product_status == 0) {
@@ -66,7 +69,6 @@
                             }
                         </style>
                     </td>
-                    <td>{{$product->product_quantity}}</td>
                     <td>
                         <a href="{{URL::to('/edit-product/'.$product->product_id)}}">
                             <i class="fa-solid fa-pen-to-square"></i>

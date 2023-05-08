@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+
 use Cart;
 session_start();
 use App\Ship;
@@ -111,8 +112,6 @@ class CheckoutController extends Controller
             $orders_data['product_quantity'] = $value->quantity;
              DB::table('tbl_order_details')->insert($orders_data);
         }
-
-
         Cart::clear();
         return view('pages.cart.cart');
     }

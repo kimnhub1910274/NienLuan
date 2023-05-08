@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+
 use Cart;
 session_start();
 
@@ -47,10 +48,9 @@ class CartController extends Controller
         return Redirect::to('/');
     }
 
-
     public function cart()
     {
-        $cate_product = DB::table('tbl_cate_pro')->where('cate_status','1')->orderby('cate_id','desc')->get();
+        $cate_product = DB::table('tbl_cate_pro')->where('cate_status', '1')->orderby('cate_id','desc')->get();
         return view('pages.cart.cart')->with('category', $cate_product);
 
     }
@@ -60,7 +60,6 @@ class CartController extends Controller
         Cart::remove($id);
         return Redirect::to('/show-cart');
     }
-
 
     public function increase_to_cart(Request $request)
     {
